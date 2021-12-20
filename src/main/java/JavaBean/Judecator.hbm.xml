@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="JavaBean.Judecator" table="JUDECATORI" optimistic-lock="version">
+        <id name="ID_JUDECATOR" type="java.lang.Long">
+            <column name="ID_JUDECATOR" sql-type="BIGINT" not-null="true"/>
+            <generator class="identity"/>
+        </id>
+        <property name="CNP" type="java.lang.String">
+            <column name="CNP" sql-type="VARCHAR" length="13" not-null="true" unique="true"/>
+        </property>
+        <property name="NUME" type="java.lang.String">
+            <column name="NUME" sql-type="VARCHAR" length="50" not-null="true"/>
+        </property>
+        <property name="PRENUME" type="java.lang.String">
+            <column name="PRENUME" sql-type="VARCHAR" length="50" not-null="true"/>
+        </property>
+        <property name="DATA_NASTERII" type="java.sql.Date">
+            <column name="DATA_NAȘTERII" sql-type="DATE" not-null="true"/>
+        </property>
+        <property name="SPECIALIZARE" type="java.lang.String">
+            <column name="SPECIALIZARE" sql-type="VARCHAR" length="50" not-null="true"/>
+        </property>
+        <property name="PRELUARE_MANDAT" type="java.sql.Date">
+            <column name="PRELUARE_MANDAT" sql-type="DATE" not-null="true"/>
+        </property>
+        <property name="EXPIRARE_MANDAT" type="java.sql.Date">
+            <column name="EXPIRARE_MANDAT" sql-type="DATE" not-null="true"/>
+        </property>
+        <set name="programari" table="PROGRAMARI" inverse="true" lazy="true" fetch="select">
+            <key column="ID_JUDECATOR"/>
+            <one-to-many class="JavaBean.Programare"/>
+        </set>
+    </class>
+</hibernate-mapping>
