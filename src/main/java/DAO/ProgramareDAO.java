@@ -3,7 +3,7 @@ package DAO;
 import JavaBean.*;
 import org.jetbrains.annotations.NotNull;
 
-import java.sql.*;
+import java.time.*;
 import java.util.List;
 
 public interface ProgramareDAO
@@ -12,8 +12,8 @@ public interface ProgramareDAO
 
     void deleteProgramare(Programare programare);
 
-    void updateProgramare(Long ID_PROGRAMARE, Judecator JUDECATOR, Proces PROCES, String ORAS, String LOCATIE, String SALA, @NotNull Date DATA,
-                          @NotNull Time ORA);
+    void updateProgramare(Long ID_PROGRAMARE, Judecator JUDECATOR, Proces PROCES, String ORAS, String LOCATIE, String SALA, @NotNull LocalDate DATA,
+                          @NotNull LocalTime ORA);
 
-    List<Programare> displayProgramare(Programare programare);
+    List<Programare> displayProgramari();
 }

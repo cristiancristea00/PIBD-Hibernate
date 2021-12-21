@@ -1,6 +1,6 @@
 package DAO;
 
-import JavaBean.*;
+import JavaBean.Proces;
 
 import java.util.List;
 
@@ -12,5 +12,5 @@ public interface ProcesDAO
 
     void updateProces(Long ID_PROCES, String NUMAR, String OBIECT, String MATERIE_JURIDICA, String STADIU_PROCESUAL, String RECLAMANT, String PARAT);
 
-    List<Proces> displayProces(Proces proces);
+    List<Proces> displayProcese();
 }

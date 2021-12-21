@@ -2,15 +2,16 @@ package Controller;
 
 import DAOImplement.JudecatorDAOImpl;
 import JavaBean.Judecator;
+import org.jetbrains.annotations.NotNull;
 
-import java.text.*;
-import java.util.Date;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class JudecatorController extends HttpServlet
@@ -19,7 +20,7 @@ public class JudecatorController extends HttpServlet
     JudecatorDAOImpl judecatorDAO = new JudecatorDAOImpl();
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    protected void doGet(@NotNull HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         if (request.getParameter("addJudecator") != null)
         {
@@ -28,17 +29,10 @@ public class JudecatorController extends HttpServlet
             judecator.setPRENUME(request.getParameter("PRENUME"));
             judecator.setSPECIALIZARE(request.getParameter("SPECIALIZARE"));
 
-            DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
-            try
-            {
-                judecator.setDATA_NASTERII(dateFormat.parse(request.getParameter("DATA_NASTERII")));
-                judecator.setPRELUARE_MANDAT(dateFormat.parse(request.getParameter("PRELUARE_MANDAT")));
-                judecator.setEXPIRARE_MANDAT(dateFormat.parse(request.getParameter("EXPIRARE_MANDAT")));
-            }
-            catch (ParseException exception)
-            {
-                exception.printStackTrace();
-            }
+            DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+            judecator.setDATA_NASTERII(LocalDate.parse(request.getParameter("DATA_NASTERII"), dateFormat));
+            judecator.setPRELUARE_MANDAT(LocalDate.parse(request.getParameter("PRELUARE_MANDAT"), dateFormat));
+            judecator.setEXPIRARE_MANDAT(LocalDate.parse(request.getParameter("EXPIRARE_MANDAT"), dateFormat));
 
             judecatorDAO.addJudecator(judecator);
             RequestDispatcher dispatcher = request.getRequestDispatcher("addJudecator.jsp");
@@ -47,7 +41,7 @@ public class JudecatorController extends HttpServlet
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    protected void doPost(@NotNull HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         if (request.getParameter("displayJudecatori") != null)
         {
@@ -72,24 +66,11 @@ public class JudecatorController extends HttpServlet
             String PRENUME = request.getParameter("PRENUME");
             String SPECIALIZARE = request.getParameter("SPECIALIZARE");
 
-            DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
-            Date DATA_NASTERII = null;
-            Date PRELUARE_MANDAT = null;
-            Date EXPIRARE_MANDAT = null;
-            try
-            {
-                DATA_NASTERII = dateFormat.parse(request.getParameter("DATA_NASTERII"));
-                PRELUARE_MANDAT = dateFormat.parse(request.getParameter("PRELUARE_MANDAT"));
-                EXPIRARE_MANDAT = dateFormat.parse(request.getParameter("EXPIRARE_MANDAT"));
-            }
-            catch (ParseException exception)
-            {
-                exception.printStackTrace();
-            }
+            DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+            LocalDate DATA_NASTERII = LocalDate.parse(request.getParameter("DATA_NASTERII"), dateFormat);
+            LocalDate PRELUARE_MANDAT = LocalDate.parse(request.getParameter("PRELUARE_MANDAT"), dateFormat);
+            LocalDate EXPIRARE_MANDAT = LocalDate.parse(request.getParameter("EXPIRARE_MANDAT"), dateFormat);
 
-            assert DATA_NASTERII != null;
-            assert PRELUARE_MANDAT != null;
-            assert EXPIRARE_MANDAT != null;
             judecatorDAO.updateJudecator(ID_JUDECATOR, CNP, NUME, PRENUME, DATA_NASTERII, SPECIALIZARE, PRELUARE_MANDAT, EXPIRARE_MANDAT);
             RequestDispatcher dispatcher = request.getRequestDispatcher("updateJudecator.jsp");
             dispatcher.forward(request, response);

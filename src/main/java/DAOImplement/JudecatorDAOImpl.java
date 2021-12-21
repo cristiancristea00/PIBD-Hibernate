@@ -1,12 +1,12 @@
 package DAOImplement;
 
-import JavaBean.*;
-import org.hibernate.*;
 import DAO.JudecatorDAO;
 import Hibernate.Util;
-import org.jetbrains.annotations.NotNull;
+import JavaBean.Judecator;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 public class JudecatorDAOImpl implements JudecatorDAO
@@ -32,8 +32,8 @@ public class JudecatorDAOImpl implements JudecatorDAO
     }
 
     @Override
-    public void updateJudecator(Long ID_JUDECATOR, String CNP, String NUME, String PRENUME, Date DATA_NASTERII, String SPECIALIZARE,
-                                @NotNull Date PRELUARE_MANDAT, @NotNull Date EXPIRARE_MANDAT)
+    public void updateJudecator(Long ID_JUDECATOR, String CNP, String NUME, String PRENUME, LocalDate DATA_NASTERII, String SPECIALIZARE,
+                                LocalDate PRELUARE_MANDAT, LocalDate EXPIRARE_MANDAT)
     {
         Session session = Util.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();

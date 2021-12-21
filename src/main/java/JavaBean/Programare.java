@@ -2,7 +2,7 @@ package JavaBean;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.sql.*;
+import java.time.*;
 
 public class Programare implements java.io.Serializable
 {
@@ -12,15 +12,15 @@ public class Programare implements java.io.Serializable
     private String ORAS;
     private String LOCATIE;
     private String SALA;
-    private Date DATA;
-    private Time ORA;
+    private LocalDate DATA;
+    private LocalTime ORA;
 
     public Programare()
     {
     }
 
-    public Programare(Long ID_PROGRAMARE, Judecator JUDECATOR, Proces PROCES, String ORAS, String LOCATIE, String SALA, @NotNull Date DATA,
-                      @NotNull Time ORA)
+    public Programare(Long ID_PROGRAMARE, Judecator JUDECATOR, Proces PROCES, String ORAS, String LOCATIE, String SALA, @NotNull LocalDate DATA,
+                      @NotNull LocalTime ORA)
     {
         this.ID_PROGRAMARE = ID_PROGRAMARE;
         this.JUDECATOR = new Judecator(JUDECATOR);
@@ -28,8 +28,8 @@ public class Programare implements java.io.Serializable
         this.ORAS = ORAS;
         this.LOCATIE = LOCATIE;
         this.SALA = SALA;
-        this.DATA = new Date(DATA.getTime());
-        this.ORA = new Time(ORA.getTime());
+        this.DATA = DATA;
+        this.ORA = ORA;
     }
 
     public Long getID_PROGRAMARE()
@@ -92,23 +92,23 @@ public class Programare implements java.io.Serializable
         this.SALA = SALA;
     }
 
-    public Date getDATA()
+    public LocalDate getDATA()
     {
-        return new Date(DATA.getTime());
+        return DATA;
     }
 
-    public void setDATA(@NotNull Date DATA)
+    public void setDATA(@NotNull LocalDate DATA)
     {
-        this.DATA = new Date(DATA.getTime());
+        this.DATA = DATA;
     }
 
-    public Time getORA()
+    public LocalTime getORA()
     {
-        return new Time(ORA.getTime());
+        return ORA;
     }
 
-    public void setORA(@NotNull Time ORA)
+    public void setORA(@NotNull LocalTime ORA)
     {
-        this.ORA = new Time(ORA.getTime());
+        this.ORA = ORA;
     }
 }

@@ -1,9 +1,8 @@
 package DAO;
 
-import JavaBean.*;
-import org.jetbrains.annotations.NotNull;
+import JavaBean.Judecator;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 public interface JudecatorDAO
@@ -12,8 +11,8 @@ public interface JudecatorDAO
 
     void deleteJudecator(Judecator judecator);
 
-    void updateJudecator(Long ID_JUDECATOR, String CNP, String NUME, String PRENUME, Date DATA_NASTERII, String SPECIALIZARE,
-                         @NotNull Date PRELUARE_MANDAT, @NotNull Date EXPIRARE_MANDAT);
+    void updateJudecator(Long ID_JUDECATOR, String CNP, String NUME, String PRENUME, LocalDate DATA_NASTERII, String SPECIALIZARE,
+                         LocalDate PRELUARE_MANDAT, LocalDate EXPIRARE_MANDAT);
 
     List<Judecator> displayJudecatori();
 }

@@ -6,7 +6,7 @@ import DAO.ProgramareDAO;
 import Hibernate.Util;
 import org.jetbrains.annotations.NotNull;
 
-import java.sql.*;
+import java.time.*;
 import java.util.List;
 
 public class ProgramareDAOImpl implements ProgramareDAO
@@ -33,7 +33,7 @@ public class ProgramareDAOImpl implements ProgramareDAO
 
     @Override
     public void updateProgramare(Long ID_PROGRAMARE, Judecator JUDECATOR, Proces PROCES, String ORAS, String LOCATIE, String SALA,
-                                 @NotNull Date DATA, @NotNull Time ORA)
+                                 @NotNull LocalDate DATA, @NotNull LocalTime ORA)
     {
         Session session = Util.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
@@ -51,7 +51,7 @@ public class ProgramareDAOImpl implements ProgramareDAO
     }
 
     @Override
-    public List<Programare> displayProgramare(Programare programare)
+    public List<Programare> displayProgramari()
     {
         Session session = Util.getSessionFactory().openSession();
         List<Programare> programareList = session.createQuery("from Programare").list();

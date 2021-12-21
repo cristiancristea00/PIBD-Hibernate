@@ -48,7 +48,7 @@ public class ProcesDAOImpl implements ProcesDAO
     }
 
     @Override
-    public List<Proces> displayProces(Proces proces)
+    public List<Proces> displayProcese()
     {
         Session session = Util.getSessionFactory().openSession();
         List<Proces> procesList = session.createQuery("from Proces").list();
