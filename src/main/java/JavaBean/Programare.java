@@ -2,6 +2,8 @@ package JavaBean;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.sql.Date;
+import java.sql.Time;
 import java.time.*;
 
 public class Programare implements java.io.Serializable
@@ -19,8 +21,7 @@ public class Programare implements java.io.Serializable
     {
     }
 
-    public Programare(Long ID_PROGRAMARE, Judecator JUDECATOR, Proces PROCES, String ORAS, String LOCATIE, String SALA, @NotNull LocalDate DATA,
-                      @NotNull LocalTime ORA)
+    public Programare(Long ID_PROGRAMARE, Judecator JUDECATOR, Proces PROCES, String ORAS, String LOCATIE, String SALA, LocalDate DATA, LocalTime ORA)
     {
         this.ID_PROGRAMARE = ID_PROGRAMARE;
         this.JUDECATOR = new Judecator(JUDECATOR);
@@ -92,23 +93,23 @@ public class Programare implements java.io.Serializable
         this.SALA = SALA;
     }
 
-    public LocalDate getDATA()
+    public Date getDATA()
     {
-        return DATA;
+        return Date.valueOf(DATA);
     }
 
-    public void setDATA(@NotNull LocalDate DATA)
+    public void setDATA(@NotNull Date DATA)
     {
-        this.DATA = DATA;
+        this.DATA = DATA.toLocalDate();
     }
 
-    public LocalTime getORA()
+    public Time getORA()
     {
-        return ORA;
+        return Time.valueOf(ORA);
     }
 
-    public void setORA(@NotNull LocalTime ORA)
+    public void setORA(@NotNull Time ORA)
     {
-        this.ORA = ORA;
+        this.ORA = ORA.toLocalTime();
     }
 }

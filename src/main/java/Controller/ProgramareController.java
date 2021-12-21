@@ -1,17 +1,20 @@
 package Controller;
 
 import DAOImplement.ProgramareDAOImpl;
+import DAOImplement.HibernateUtil;
 import JavaBean.Judecator;
 import JavaBean.Proces;
 import JavaBean.Programare;
 import org.hibernate.Session;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.Date;
+import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -29,7 +32,7 @@ public class ProgramareController extends HttpServlet
         {
             Long ID_JUDECATOR = Long.parseLong(request.getParameter("ID_JUDECATOR"));
             Long ID_PROCES = Long.parseLong(request.getParameter("ID_PROCES"));
-            Session session = Hibernate.Util.getSessionFactory().openSession();
+            Session session = HibernateUtil.getSessionFactory().openSession();
             programare.setJUDECATOR(session.get(Judecator.class, ID_JUDECATOR));
             programare.setPROCES(session.get(Proces.class, ID_PROCES));
             session.close();
@@ -39,10 +42,10 @@ public class ProgramareController extends HttpServlet
             programare.setSALA(request.getParameter("SALA"));
 
             DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd.MM.yyyy");
-            programare.setDATA(LocalDate.parse(request.getParameter("DATA"), dateFormat));
+            programare.setDATA(Date.valueOf(LocalDate.parse(request.getParameter("DATA"), dateFormat)));
 
             DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("HH:mm");
-            programare.setORA(LocalTime.parse(request.getParameter("ORA"), timeFormat));
+            programare.setORA(Time.valueOf(LocalTime.parse(request.getParameter("ORA"), timeFormat)));
 
             programareDAO.addProgramare(programare);
             RequestDispatcher dispatcher = request.getRequestDispatcher("addProgramare.jsp");
@@ -71,7 +74,7 @@ public class ProgramareController extends HttpServlet
         if (request.getParameter("updateProgramare") != null)
         {
             Long ID_PROGRAMARE = Long.parseLong(request.getParameter("ID_PROGRAMARE"));
-            Session session = Hibernate.Util.getSessionFactory().openSession();
+            Session session = HibernateUtil.getSessionFactory().openSession();
             Long ID_JUDECATOR = Long.parseLong(request.getParameter("ID_JUDECATOR"));
             Long ID_PROCES = Long.parseLong(request.getParameter("ID_PROCES"));
             Judecator JUDECATOR = session.get(Judecator.class, ID_JUDECATOR);

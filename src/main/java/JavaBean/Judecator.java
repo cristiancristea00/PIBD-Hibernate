@@ -2,6 +2,7 @@ package JavaBean;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.sql.Date;
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
@@ -42,10 +43,10 @@ public class Judecator implements java.io.Serializable
         this.CNP = judecator.getCNP();
         this.NUME = judecator.getNUME();
         this.PRENUME = judecator.getPRENUME();
-        this.DATA_NASTERII = judecator.getDATA_NASTERII();
+        this.DATA_NASTERII = judecator.getDATA_NASTERII().toLocalDate();
         this.SPECIALIZARE = judecator.getSPECIALIZARE();
-        this.PRELUARE_MANDAT = judecator.getPRELUARE_MANDAT();
-        this.EXPIRARE_MANDAT = judecator.getEXPIRARE_MANDAT();
+        this.PRELUARE_MANDAT = judecator.getPRELUARE_MANDAT().toLocalDate();
+        this.EXPIRARE_MANDAT = judecator.getEXPIRARE_MANDAT().toLocalDate();
         this.programari = new HashSet<>(judecator.getProgramari());
     }
 
@@ -89,14 +90,14 @@ public class Judecator implements java.io.Serializable
         this.PRENUME = PRENUME;
     }
 
-    public LocalDate getDATA_NASTERII()
+    public Date getDATA_NASTERII()
     {
-        return DATA_NASTERII;
+        return Date.valueOf(DATA_NASTERII);
     }
 
-    public void setDATA_NASTERII(LocalDate DATA_NASTERII)
+    public void setDATA_NASTERII(@NotNull Date DATA_NASTERII)
     {
-        this.DATA_NASTERII = DATA_NASTERII;
+        this.DATA_NASTERII = DATA_NASTERII.toLocalDate();
     }
 
     public String getSPECIALIZARE()
@@ -109,24 +110,24 @@ public class Judecator implements java.io.Serializable
         this.SPECIALIZARE = SPECIALIZARE;
     }
 
-    public LocalDate getPRELUARE_MANDAT()
+    public Date getPRELUARE_MANDAT()
     {
-        return PRELUARE_MANDAT;
+        return Date.valueOf(PRELUARE_MANDAT);
     }
 
-    public void setPRELUARE_MANDAT(LocalDate PRELUARE_MANDAT)
+    public void setPRELUARE_MANDAT(Date PRELUARE_MANDAT)
     {
-        this.PRELUARE_MANDAT = PRELUARE_MANDAT;
+        this.PRELUARE_MANDAT = PRELUARE_MANDAT.toLocalDate();
     }
 
-    public LocalDate getEXPIRARE_MANDAT()
+    public Date getEXPIRARE_MANDAT()
     {
-        return EXPIRARE_MANDAT;
+        return Date.valueOf(EXPIRARE_MANDAT);
     }
 
-    public void setEXPIRARE_MANDAT(LocalDate EXPIRARE_MANDAT)
+    public void setEXPIRARE_MANDAT(@NotNull Date EXPIRARE_MANDAT)
     {
-        this.EXPIRARE_MANDAT = EXPIRARE_MANDAT;
+        this.EXPIRARE_MANDAT = EXPIRARE_MANDAT.toLocalDate();
     }
 
     public Set<Programare> getProgramari()

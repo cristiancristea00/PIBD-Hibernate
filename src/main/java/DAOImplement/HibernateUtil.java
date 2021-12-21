@@ -1,9 +1,9 @@
-package Hibernate;
+package DAOImplement;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-public class Util
+public class HibernateUtil
 {
     private static final SessionFactory sessionFactory;
 

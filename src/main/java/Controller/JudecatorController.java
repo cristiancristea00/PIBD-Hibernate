@@ -4,12 +4,13 @@ import DAOImplement.JudecatorDAOImpl;
 import JavaBean.Judecator;
 import org.jetbrains.annotations.NotNull;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.Date;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -30,9 +31,9 @@ public class JudecatorController extends HttpServlet
             judecator.setSPECIALIZARE(request.getParameter("SPECIALIZARE"));
 
             DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd.MM.yyyy");
-            judecator.setDATA_NASTERII(LocalDate.parse(request.getParameter("DATA_NASTERII"), dateFormat));
-            judecator.setPRELUARE_MANDAT(LocalDate.parse(request.getParameter("PRELUARE_MANDAT"), dateFormat));
-            judecator.setEXPIRARE_MANDAT(LocalDate.parse(request.getParameter("EXPIRARE_MANDAT"), dateFormat));
+            judecator.setDATA_NASTERII(Date.valueOf(LocalDate.parse(request.getParameter("DATA_NASTERII"), dateFormat)));
+            judecator.setPRELUARE_MANDAT(Date.valueOf(LocalDate.parse(request.getParameter("PRELUARE_MANDAT"), dateFormat)));
+            judecator.setEXPIRARE_MANDAT(Date.valueOf(LocalDate.parse(request.getParameter("EXPIRARE_MANDAT"), dateFormat)));
 
             judecatorDAO.addJudecator(judecator);
             RequestDispatcher dispatcher = request.getRequestDispatcher("addJudecator.jsp");

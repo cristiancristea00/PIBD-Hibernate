@@ -3,7 +3,6 @@ package DAOImplement;
 import JavaBean.*;
 import org.hibernate.*;
 import DAO.ProcesDAO;
-import Hibernate.Util;
 
 import java.util.List;
 
@@ -12,7 +11,7 @@ public class ProcesDAOImpl implements ProcesDAO
     @Override
     public void addProces(Proces proces)
     {
-        Session session = Util.getSessionFactory().openSession();
+        Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
         session.save(proces);
         transaction.commit();
@@ -22,7 +21,7 @@ public class ProcesDAOImpl implements ProcesDAO
     @Override
     public void deleteProces(Proces proces)
     {
-        Session session = Util.getSessionFactory().openSession();
+        Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
         session.delete(proces);
         transaction.commit();
@@ -33,7 +32,7 @@ public class ProcesDAOImpl implements ProcesDAO
     public void updateProces(Long ID_PROCES, String NUMAR, String OBIECT, String MATERIE_JURIDICA, String STADIU_PROCESUAL, String RECLAMANT,
                              String PARAT)
     {
-        Session session = Util.getSessionFactory().openSession();
+        Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
         Proces proces = session.load(Proces.class, ID_PROCES);
         proces.setNUMAR(NUMAR);
@@ -50,7 +49,7 @@ public class ProcesDAOImpl implements ProcesDAO
     @Override
     public List<Proces> displayProcese()
     {
-        Session session = Util.getSessionFactory().openSession();
+        Session session = HibernateUtil.getSessionFactory().openSession();
         List<Proces> procesList = session.createQuery("from Proces").list();
         session.close();
         return procesList;
