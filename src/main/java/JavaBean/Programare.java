@@ -2,11 +2,12 @@ package JavaBean;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.io.Serializable;
 import java.sql.Date;
 import java.sql.Time;
 import java.time.*;
 
-public class Programare implements java.io.Serializable
+public class Programare implements Serializable
 {
     private Long ID_PROGRAMARE;
     private Judecator JUDECATOR;
@@ -19,18 +20,6 @@ public class Programare implements java.io.Serializable
 
     public Programare()
     {
-    }
-
-    public Programare(Long ID_PROGRAMARE, Judecator JUDECATOR, Proces PROCES, String ORAS, String LOCATIE, String SALA, LocalDate DATA, LocalTime ORA)
-    {
-        this.ID_PROGRAMARE = ID_PROGRAMARE;
-        this.JUDECATOR = new Judecator(JUDECATOR);
-        this.PROCES = new Proces(PROCES);
-        this.ORAS = ORAS;
-        this.LOCATIE = LOCATIE;
-        this.SALA = SALA;
-        this.DATA = DATA;
-        this.ORA = ORA;
     }
 
     public Long getID_PROGRAMARE()

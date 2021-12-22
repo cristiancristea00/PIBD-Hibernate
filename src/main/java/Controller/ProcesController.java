@@ -41,7 +41,7 @@ public class ProcesController extends HttpServlet
         if (request.getParameter("displayProcese") != null)
         {
             List<Proces> procese = procesDAO.displayProcese();
-            request.setAttribute("proceseList", procese);
+            request.setAttribute("procesList", procese);
             RequestDispatcher dispatcher = request.getRequestDispatcher("displayProcese.jsp");
             dispatcher.forward(request, response);
         }

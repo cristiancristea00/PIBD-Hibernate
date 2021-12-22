@@ -7,11 +7,11 @@
             <column name="ID_PROGRAMARE" sql-type="BIGINT" not-null="true"/>
             <generator class="identity"/>
         </id>
-        <many-to-one name="JUDECATOR" class="JavaBean.Judecator" fetch="select">
-            <column name="ID_JUDECATOR" sql-type="BIGINT" not-null="true"/>
-        </many-to-one>
         <many-to-one name="PROCES" class="JavaBean.Proces" fetch="select">
             <column name="ID_PROCES" sql-type="BIGINT" not-null="true"/>
+        </many-to-one>
+        <many-to-one name="JUDECATOR" class="JavaBean.Judecator" fetch="select">
+            <column name="ID_JUDECATOR" sql-type="BIGINT" not-null="true"/>
         </many-to-one>
         <property name="ORAS" type="java.lang.String">
             <column name="ORAȘ" sql-type="VARCHAR" length="20" not-null="true"/>

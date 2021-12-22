@@ -5,9 +5,48 @@
     <title>PIBD</title>
 </head>
 <body>
+
 <center>
     <h1>PIBD</h1>
-    <h3><a href="Judecatori.jsp">Tabela Judecatori</a></h3>
 </center>
+
+<center>
+    <h3>
+        Judecători
+    </h3>
+
+
+    <form role="form" action="JudecatorController" method="POST">
+        <div class="form-group">
+            <label class="control-label">Vizualizati datele din tabela Judecatori: </label>
+            <input type="submit" class="btn btn-default" name="displayJudecatori" value="Show">
+        </div>
+    </form>
+
+
+    <h3>
+        Procese
+    </h3>
+
+
+    <form role="form" action="ProcesController" method="POST">
+        <div class="form-group">
+            <label class="control-label">Vizualizati datele din tabela Procese: </label>
+            <input type="submit" class="btn btn-default" name="displayProcese" value="Show">
+        </div>
+    </form>
+
+    <h3>
+        Programări
+    </h3>
+
+    <form role="form" action="ProgramareController" method="POST">
+        <div class="form-group">
+            <label class="control-label">Vizualizati datele din tabela Programari: </label>
+            <input type="submit" class="btn btn-default" name="displayProgramari" value="Show">
+        </div>
+    </form>
+</center>
+
 </body>
 </html>

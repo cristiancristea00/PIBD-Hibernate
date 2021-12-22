@@ -28,7 +28,7 @@
         <property name="EXPIRARE_MANDAT" type="java.sql.Date">
             <column name="EXPIRARE_MANDAT" sql-type="DATE" not-null="true"/>
         </property>
-        <set name="programari" table="PROGRAMARI" inverse="true" lazy="true" fetch="select">
+        <set name="PROGRAMARI" table="PROGRAMARI" inverse="true" lazy="true" fetch="select">
             <key column="ID_JUDECATOR"/>
             <one-to-many class="JavaBean.Programare"/>
         </set>

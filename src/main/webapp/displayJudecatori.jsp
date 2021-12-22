@@ -11,9 +11,12 @@
     </h1>
 </center>
 
+<p align="center">
+    <a href="index.html"><b>Home</b></a>
+</p>
+
 <table border="1" align="center">
     <tr>
-        <th>ID Judecator</th>
         <th>CNP</th>
         <th>Nume</th>
         <th>Prenume</th>
@@ -25,7 +28,6 @@
     <%--@elvariable id="judecatorList" type="java.util.List"--%>
     <c:forEach var="JUDECATOR" items="${judecatorList}">
         <tr>
-            <td>${JUDECATOR.ID_JUDECATOR}</td>
             <td>${JUDECATOR.CNP}</td>
             <td>${JUDECATOR.NUME}</td>
             <td>${JUDECATOR.PRENUME}</td>

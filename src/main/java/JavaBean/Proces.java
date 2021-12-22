@@ -2,10 +2,11 @@ package JavaBean;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Proces implements java.io.Serializable
+public class Proces implements Serializable
 {
     private Long ID_PROCES;
     private String NUMAR;
@@ -14,13 +15,14 @@ public class Proces implements java.io.Serializable
     private String STADIU_PROCESUAL;
     private String RECLAMANT;
     private String PARAT;
-    private Set<Programare> programari = new HashSet<>(0);
+    private Set<Programare> PROGRAMARI = new HashSet<>();
 
-    public Proces() {
+    public Proces()
+    {
     }
 
     public Proces(Long ID_PROCES, String NUMAR, String OBIECT, String MATERIE_JURIDICA, String STADIU_PROCESUAL, String RECLAMANT, String PARAT,
-                  Set<Programare> programari)
+                  Set<Programare> PROGRAMARI)
     {
         this.ID_PROCES = ID_PROCES;
         this.NUMAR = NUMAR;
@@ -29,19 +31,19 @@ public class Proces implements java.io.Serializable
         this.STADIU_PROCESUAL = STADIU_PROCESUAL;
         this.RECLAMANT = RECLAMANT;
         this.PARAT = PARAT;
-        this.programari = new HashSet<>(programari);
+        this.PROGRAMARI = new HashSet<>(PROGRAMARI);
     }
 
     public Proces(@NotNull Proces proces)
     {
-        this.ID_PROCES = proces.ID_PROCES;
-        this.NUMAR = proces.NUMAR;
-        this.OBIECT = proces.OBIECT;
-        this.MATERIE_JURIDICA = proces.MATERIE_JURIDICA;
-        this.STADIU_PROCESUAL = proces.STADIU_PROCESUAL;
-        this.RECLAMANT = proces.RECLAMANT;
-        this.PARAT = proces.PARAT;
-        this.programari = new HashSet<>(proces.programari);
+        this.ID_PROCES = proces.getID_PROCES();
+        this.NUMAR = proces.getNUMAR();
+        this.OBIECT = proces.getOBIECT();
+        this.MATERIE_JURIDICA = proces.getMATERIE_JURIDICA();
+        this.STADIU_PROCESUAL = proces.getSTADIU_PROCESUAL();
+        this.RECLAMANT = proces.getRECLAMANT();
+        this.PARAT = proces.getPARAT();
+        this.PROGRAMARI = new HashSet<>(proces.getPROGRAMARI());
     }
 
     public Long getID_PROCES()
@@ -114,13 +116,13 @@ public class Proces implements java.io.Serializable
         this.PARAT = PARAT;
     }
 
-    public Set<Programare> getProgramari()
+    public Set<Programare> getPROGRAMARI()
     {
-        return new HashSet<>(programari);
+        return new HashSet<>(PROGRAMARI);
     }
 
-    public void setProgramari(Set<Programare> programari)
+    public void setPROGRAMARI(Set<Programare> PROGRAMARI)
     {
-        this.programari = new HashSet<>(programari);
+        this.PROGRAMARI = new HashSet<>(PROGRAMARI);
     }
 }

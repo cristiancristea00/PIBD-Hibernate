@@ -2,12 +2,13 @@ package JavaBean;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.io.Serializable;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Judecator implements java.io.Serializable
+public class Judecator implements Serializable
 {
     private Long ID_JUDECATOR;
     private String CNP;
@@ -17,14 +18,14 @@ public class Judecator implements java.io.Serializable
     private String SPECIALIZARE;
     private LocalDate PRELUARE_MANDAT;
     private LocalDate EXPIRARE_MANDAT;
-    private Set<Programare> programari = new HashSet<>(0);
+    private Set<Programare> PROGRAMARI = new HashSet<>();
 
     public Judecator()
     {
     }
 
     public Judecator(Long ID_JUDECATOR, String CNP, String NUME, String PRENUME, LocalDate DATA_NASTERII, String SPECIALIZARE,
-                     LocalDate PRELUARE_MANDAT, LocalDate EXPIRARE_MANDAT, Set<Programare> programari)
+                     LocalDate PRELUARE_MANDAT, LocalDate EXPIRARE_MANDAT, Set<Programare> PROGRAMARI)
     {
         this.ID_JUDECATOR = ID_JUDECATOR;
         this.CNP = CNP;
@@ -34,7 +35,7 @@ public class Judecator implements java.io.Serializable
         this.SPECIALIZARE = SPECIALIZARE;
         this.PRELUARE_MANDAT = PRELUARE_MANDAT;
         this.EXPIRARE_MANDAT = EXPIRARE_MANDAT;
-        this.programari = new HashSet<>(programari);
+        this.PROGRAMARI = new HashSet<>(PROGRAMARI);
     }
 
     public Judecator(@NotNull Judecator judecator)
@@ -47,7 +48,7 @@ public class Judecator implements java.io.Serializable
         this.SPECIALIZARE = judecator.getSPECIALIZARE();
         this.PRELUARE_MANDAT = judecator.getPRELUARE_MANDAT().toLocalDate();
         this.EXPIRARE_MANDAT = judecator.getEXPIRARE_MANDAT().toLocalDate();
-        this.programari = new HashSet<>(judecator.getProgramari());
+        this.PROGRAMARI = new HashSet<>(judecator.getPROGRAMARI());
     }
 
     public Long getID_JUDECATOR()
@@ -130,13 +131,13 @@ public class Judecator implements java.io.Serializable
         this.EXPIRARE_MANDAT = EXPIRARE_MANDAT.toLocalDate();
     }
 
-    public Set<Programare> getProgramari()
+    public Set<Programare> getPROGRAMARI()
     {
-        return new HashSet<>(programari);
+        return new HashSet<>(PROGRAMARI);
     }
 
-    public void setProgramari(Set<Programare> programari)
+    public void setPROGRAMARI(Set<Programare> PROGRAMARI)
     {
-        this.programari = new HashSet<>(programari);
+        this.PROGRAMARI = new HashSet<>(PROGRAMARI);
     }
 }

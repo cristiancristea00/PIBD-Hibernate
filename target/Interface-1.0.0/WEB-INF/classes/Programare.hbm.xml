@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="JavaBean.Programare" table="PROGRAMARI" optimistic-lock="version">
+        <id name="ID_PROGRAMARE" type="java.lang.Long">
+            <column name="ID_PROGRAMARE" sql-type="BIGINT" not-null="true"/>
+            <generator class="identity"/>
+        </id>
+        <many-to-one name="PROCES" class="JavaBean.Proces" fetch="select">
+            <column name="ID_PROCES" sql-type="BIGINT" not-null="true"/>
+        </many-to-one>
+        <many-to-one name="JUDECATOR" class="JavaBean.Judecator" fetch="select">
+            <column name="ID_JUDECATOR" sql-type="BIGINT" not-null="true"/>
+        </many-to-one>
+        <property name="ORAS" type="java.lang.String">
+            <column name="ORAȘ" sql-type="VARCHAR" length="20" not-null="true"/>
+        </property>
+        <property name="LOCATIE" type="java.lang.String">
+            <column name="LOCAȚIE" sql-type="VARCHAR" length="50" not-null="true"/>
+        </property>
+        <property name="SALA" type="java.lang.String">
+            <column name="SALA" sql-type="VARCHAR" length="10" not-null="true"/>
+        </property>
+        <property name="DATA" type="java.sql.Date">
+            <column name="DATĂ" sql-type="DATE" not-null="true"/>
+        </property>
+        <property name="ORA" type="java.sql.Time">
+            <column name="ORĂ" sql-type="TIME" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>
