@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html lang="ro">
@@ -20,6 +20,10 @@
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/select/1.3.3/css/select.dataTables.min.css">
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/select/1.3.3/js/dataTables.select.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Readex+Pro" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 
     <script>
         $(document).ready(function ()
@@ -52,49 +56,12 @@
         });
     </script>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Readex+Pro" rel="stylesheet">
-
-    <style>
-        *
-        {
-            font-family : 'Readex Pro', sans-serif;
-        }
-
-        .dataTables_filter
-        {
-            margin-bottom : 6px;
-        }
-    </style>
-
-    <script>
-        $(document).ready(function ()
-        {
-            $("#deleteJudecator").hide();
-            $("#updateJudecator").hide();
-
-            $("#update").click(function ()
-            {
-                $("#updateJudecator").show();
-                $("#deleteJudecator").hide();
-            });
-            $("#delete").click(function ()
-            {
-                $("#deleteJudecator").show();
-                $("#updateJudecator").hide();
-            });
-        });
-    </script>
-
 </head>
 
 <body>
 
-<div class="m-4" style="text-align: center;">
-    <h1>
-        Judecători
-    </h1>
+<div class="m-4 title">
+    Judecători
 </div>
 
 <p style="text-align: center;">
@@ -102,7 +69,7 @@
 </p>
 
 <div class="m-5">
-    <table id="judecatori_table" class="table table-striped table-bordered">
+    <table id="judecatori_table" class="table table-striped cell-border">
         <thead>
         <tr class="table-dark text-center align-middle">
             <th scope="col">Nume</th>
@@ -129,24 +96,6 @@
         </tbody>
     </table>
 </div>
-
-<form action="JudecatorController" method="POST">
-    <p align="center">
-        Modifică: <input type="checkbox" id="update">
-        Șterge: <input type="checkbox" id="delete" onclick="document.getElementById('CNP').disabled = this.checked;">
-        <br><br>
-        <select name="ID_JUDECATOR">
-            <c:forEach items="${judecatorList}" var="JUDECATOR">
-                <option value="${JUDECATOR.ID_JUDECATOR}">${JUDECATOR.NUME} ${JUDECATOR.PRENUME}</option>
-            </c:forEach>
-        </select>
-        <br><br>
-        CNP: <input id="CNP" type="text" name="CNP">
-        <br><br>
-        <button type="submit" id="updateJudecator" name="modificaPacient"> Modifică</button>
-        <button type="submit" id="deleteJudecator" name="stergePacient"> Șterge</button>
-    </p>
-</form>
 
 </body>
 

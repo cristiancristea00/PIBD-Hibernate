@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html lang="ro">
@@ -19,6 +19,10 @@
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/select/1.3.3/css/select.dataTables.min.css">
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/select/1.3.3/js/dataTables.select.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Readex+Pro" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 
     <script>
         $(document).ready(function ()
@@ -51,38 +55,20 @@
         });
     </script>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Readex+Pro" rel="stylesheet">
-
-    <style>
-        *
-        {
-            font-family : 'Readex Pro', sans-serif;
-        }
-
-        .dataTables_filter
-        {
-            margin-bottom : 6px;
-        }
-    </style>
-
 </head>
 
 <body>
 
-<div class="m-4" style="text-align: center;">
-    <h1>
-        Procese
-    </h1>
+<div class="m-4 title">
+    Procese
 </div>
 
-<p style="text-align: center;">
+<p class="text-center">
     <a href="index.html"><b>Home</b></a>
 </p>
 
 <div class="m-5">
-    <table id="procese_table" class="table table-striped table-bordered">
+    <table id="procese_table" class="table table-striped cell-border">
         <thead>
         <tr class="table-dark text-center align-middle">
             <th scope="col">Număr</th>

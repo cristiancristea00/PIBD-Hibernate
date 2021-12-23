@@ -1,0 +1,33 @@
+*
+{
+    font-family : 'Readex Pro', sans-serif;
+}
+
+.dataTables_filter
+{
+    margin-bottom : 6px;
+}
+
+.title
+{
+    font-size   : 3em;
+    font-weight : bold;
+    text-align  : center;
+}
+
+.header
+{
+    font-size : 1.5em;
+}
+
+td
+{
+    border-left   : 1px solid #000000;
+    border-right  : 1px solid #000000;
+}
+
+th
+{
+    border-left   : 1px solid #000000;
+    border-right  : 1px solid #000000;
+}
