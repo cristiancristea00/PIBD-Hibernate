@@ -79,17 +79,19 @@
     <div class="row">
 
         <div class="col-sm text-center">
-            <button type="submit" class="btn btn-primary btn-lg m-2" data-bs-toggle="modal" data-bs-target="#judecatori_update_modal">
+            <button type="submit" class="btn btn-primary btn-lg m-2 fix-button" data-bs-toggle="modal" data-bs-target="#judecatori_update_modal">
                 Modifică un judecător
             </button>
         </div>
 
-        <div class="col-sm text-center">
-            <a class="btn btn-primary btn-lg m-2" href="index.html" role="button">Home</a>
+        <div class="col-sm text-center menu">
+            <button class="btn btn-primary btn-lg m-2 fix-button" onclick="location.href='index.html';" value="Home">
+                Home
+            </button>
         </div>
 
         <div class="col-sm text-center">
-            <button type="submit" class="btn btn-primary btn-lg m-2" data-bs-toggle="modal" data-bs-target="#judecatori_delete_modal">
+            <button type="submit" class="btn btn-primary btn-lg m-2 fix-button" data-bs-toggle="modal" data-bs-target="#judecatori_delete_modal">
                 Șterge un judecător
             </button>
         </div>

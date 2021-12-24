@@ -63,8 +63,27 @@
     Procese
 </div>
 
-<div class="m-2 header">
-    <a href="index.html">Home</a>
+<div class="container">
+    <div class="row">
+
+        <div class="col-sm text-center">
+            <button type="submit" class="btn btn-primary btn-lg m-2 fix-button" data-bs-toggle="modal" data-bs-target="#procese_update_modal">
+                Modifică un proces
+            </button>
+        </div>
+
+        <div class="col-sm text-center menu">
+            <button class="btn btn-primary btn-lg m-2 fix-button" onclick="location.href='index.html';" value="Home">
+                Home
+            </button>
+        </div>
+
+        <div class="col-sm text-center">
+            <button type="submit" class="btn btn-primary btn-lg m-2 fix-button" data-bs-toggle="modal" data-bs-target="#procese_delete_modal">
+                Șterge un proces
+            </button>
+        </div>
+    </div>
 </div>
 
 <div class="m-5">
