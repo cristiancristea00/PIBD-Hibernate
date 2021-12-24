@@ -20,6 +20,14 @@ public class Programare implements Serializable
 
     public Programare()
     {
+        ID_PROGRAMARE = 0L;
+        JUDECATOR = new Judecator();
+        PROCES = new Proces();
+        ORAS = "";
+        LOCATIE = "";
+        SALA = "";
+        DATA = LocalDate.now();
+        ORA = LocalTime.now();
     }
 
     public Long getID_PROGRAMARE()

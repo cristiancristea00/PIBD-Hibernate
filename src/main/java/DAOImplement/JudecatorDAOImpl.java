@@ -32,7 +32,7 @@ public class JudecatorDAOImpl implements JudecatorDAO
     }
 
     @Override
-    public void updateJudecator(Long ID_JUDECATOR, String CNP, String NUME, String PRENUME, String TELEFON, String EMAIL, String SPECIALIZARE,
+    public void updateJudecator(Long ID_JUDECATOR, String CNP, String NUME, String PRENUME, String SPECIALIZARE, String TELEFON, String EMAIL,
                                 LocalDate PRELUARE_MANDAT, LocalDate EXPIRARE_MANDAT)
     {
         Session session = HibernateUtil.getSessionFactory().openSession();
@@ -64,9 +64,7 @@ public class JudecatorDAOImpl implements JudecatorDAO
     public Judecator getJudecator(Long ID_JUDECATOR)
     {
         Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction transaction = session.beginTransaction();
         Judecator judecator = session.load(Judecator.class, ID_JUDECATOR);
-        transaction.commit();
         session.close();
         return judecator;
     }

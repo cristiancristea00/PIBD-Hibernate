@@ -56,6 +56,17 @@
         });
     </script>
 
+    <script>
+        if (session.getAttribute("REFRESH") != null)
+        {
+            response.sendRedirect("Judecator");
+        }
+        else
+        {
+            session.setAttribute("REFRESH", "TRUE");
+        }
+    </script>
+
 </head>
 
 <body>
@@ -68,13 +79,13 @@
     <div class="row">
 
         <div class="col-sm text-center">
-            <a class="btn btn-primary btn-lg m-2" href="index.html" role="button">Home</a>
-        </div>
-
-        <div class="col-sm text-center">
             <button type="submit" class="btn btn-primary btn-lg m-2" data-bs-toggle="modal" data-bs-target="#judecatori_update_modal">
                 Modifică un judecător
             </button>
+        </div>
+
+        <div class="col-sm text-center">
+            <a class="btn btn-primary btn-lg m-2" href="index.html" role="button">Home</a>
         </div>
 
         <div class="col-sm text-center">
@@ -83,37 +94,6 @@
             </button>
         </div>
     </div>
-</div>
-
-<div class="m-5">
-    <table id="judecatori_table" class="table table-striped cell-border">
-        <thead>
-        <tr class="table-dark text-center align-middle">
-            <th scope="col">Nume</th>
-            <th scope="col">CNP</th>
-            <th scope="col">Telefon</th>
-            <th scope="col">Email</th>
-            <th scope="col">Specializare</th>
-            <th scope="col">Preluare mandat</th>
-            <th scope="col">Expirare mandat</th>
-        </tr>
-        </thead>
-
-        <tbody>
-        <%--@elvariable id="judecatorList" type="java.util.List"--%>
-        <c:forEach var="JUDECATOR" items="${judecatorList}">
-            <tr class="align-middle">
-                <td>${JUDECATOR.PRENUME} ${JUDECATOR.NUME}</td>
-                <td class="text-center">${JUDECATOR.CNP}</td>
-                <td class="text-center">${JUDECATOR.TELEFON}</td>
-                <td>${JUDECATOR.EMAIL}</td>
-                <td>${JUDECATOR.SPECIALIZARE}</td>
-                <td class="text-center">${JUDECATOR.PRELUARE_MANDAT}</td>
-                <td class="text-center">${JUDECATOR.EXPIRARE_MANDAT}</td>
-            </tr>
-        </c:forEach>
-        </tbody>
-    </table>
 </div>
 
 <!-- Judecători Update Modal -->
@@ -132,10 +112,11 @@
                     <div class="row">
                         <div class="col">
                             <div class="form-floating">
-                                <select type="text" class="form-control" name="Select_judecator" aria-label="Select judecator" id="Select_judecator">
+                                <select type="text" class="form-control" name="Select_judecator_Update" aria-label="Select judecator"
+                                        id="Select_judecator_Update">
                                     <%--@elvariable id="judecatorList" type="java.util.List"--%>
                                     <c:forEach items="${judecatorList}" var="judecator">
-                                        <option value="${judecator.id}">${judecator.PRENUME} ${judecator.NUME}</option>
+                                        <option value="${judecator.ID_JUDECATOR}">${judecator.PRENUME} ${judecator.NUME} (${judecator.CNP})</option>
                                     </c:forEach>
                                 </select>
                                 <label for="Specializare_update">Judecător</label>
@@ -196,6 +177,7 @@
                             <div class="form-floating">
                                 <select type="text" class="form-control" name="Specializare_update" aria-label="Specializare"
                                         id="Specializare_update">
+                                    <option selected value=""></option>
                                     <option value="Cauze militare">Cauze militare</option>
                                     <option value="Cauze comerciale">Cauze comerciale</option>
                                     <option value="Cauze de drept constituțional">Cauze de drept constituțional</option>
@@ -243,6 +225,74 @@
             </form>
         </div>
     </div>
+</div>
+
+<!-- Judecători Delete Modal -->
+<div class="modal fade" id="judecatori_delete_modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+     aria-labelledby="judecatori_delete_modal_label" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="judecatori_delete_modal_label">Șterge un judecător</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form autocomplete="on" action="Judecatori" method="GET">
+                <div class="modal-body">
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-floating">
+                                <select type="text" class="form-control" name="Select_judecator_Delete" aria-label="Select judecator"
+                                        id="Select_judecator_Delete">
+                                    <%--@elvariable id="judecatorList" type="java.util.List"--%>
+                                    <c:forEach items="${judecatorList}" var="judecator">
+                                        <option value="${judecator.ID_JUDECATOR}">${judecator.PRENUME} ${judecator.NUME} (${judecator.CNP})</option>
+                                    </c:forEach>
+                                </select>
+                                <label for="Specializare_update">Judecător</label>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Închide</button>
+                    <button type="submit" class="btn btn-primary" name="deleteJudecator">Șterge</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="m-5">
+    <table id="judecatori_table" class="table table-striped cell-border">
+        <thead>
+        <tr class="table-dark text-center align-middle">
+            <th scope="col">Nume</th>
+            <th scope="col">CNP</th>
+            <th scope="col">Telefon</th>
+            <th scope="col">Email</th>
+            <th scope="col">Specializare</th>
+            <th scope="col">Preluare mandat</th>
+            <th scope="col">Expirare mandat</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <%--@elvariable id="judecatorList" type="java.util.List"--%>
+        <c:forEach var="JUDECATOR" items="${judecatorList}">
+            <tr class="align-middle">
+                <td>${JUDECATOR.PRENUME} ${JUDECATOR.NUME}</td>
+                <td class="text-center">${JUDECATOR.CNP}</td>
+                <td class="text-center">${JUDECATOR.TELEFON}</td>
+                <td>${JUDECATOR.EMAIL}</td>
+                <td>${JUDECATOR.SPECIALIZARE}</td>
+                <td class="text-center">${JUDECATOR.PRELUARE_MANDAT}</td>
+                <td class="text-center">${JUDECATOR.EXPIRARE_MANDAT}</td>
+            </tr>
+        </c:forEach>
+        </tbody>
+    </table>
 </div>
 
 </body>

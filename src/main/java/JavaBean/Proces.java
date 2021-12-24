@@ -15,10 +15,18 @@ public class Proces implements Serializable
     private String STADIU_PROCESUAL;
     private String RECLAMANT;
     private String PARAT;
-    private Set<Programare> PROGRAMARI = new HashSet<>();
+    private Set<Programare> PROGRAMARI;
 
     public Proces()
     {
+        ID_PROCES = 0L;
+        NUMAR = "";
+        OBIECT = "";
+        MATERIE_JURIDICA = "";
+        STADIU_PROCESUAL = "";
+        RECLAMANT = "";
+        PARAT = "";
+        PROGRAMARI = new HashSet<>();
     }
 
     public Proces(Long ID_PROCES, String NUMAR, String OBIECT, String MATERIE_JURIDICA, String STADIU_PROCESUAL, String RECLAMANT, String PARAT,

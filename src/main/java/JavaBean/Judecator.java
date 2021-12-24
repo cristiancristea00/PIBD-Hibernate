@@ -19,10 +19,20 @@ public class Judecator implements Serializable
     private String SPECIALIZARE;
     private LocalDate PRELUARE_MANDAT;
     private LocalDate EXPIRARE_MANDAT;
-    private Set<Programare> PROGRAMARI = new HashSet<>();
+    private Set<Programare> PROGRAMARI;
 
     public Judecator()
     {
+        ID_JUDECATOR = 0L;
+        CNP = "";
+        NUME = "";
+        PRENUME = "";
+        TELEFON = "";
+        EMAIL = "";
+        SPECIALIZARE = "";
+        PRELUARE_MANDAT = LocalDate.now();
+        EXPIRARE_MANDAT = LocalDate.now();
+        PROGRAMARI = new HashSet<>();
     }
 
     public Judecator(Long ID_JUDECATOR, String CNP, String NUME, String PRENUME, String TELEFON, String EMAIL, String SPECIALIZARE,

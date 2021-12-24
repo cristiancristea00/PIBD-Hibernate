@@ -43,7 +43,7 @@ public class JudecatorController extends HttpServlet
         }
         if (request.getParameter("updateJudecator") != null)
         {
-            Long ID_JUDECATOR = Long.parseLong(request.getParameter("judecator"));
+            Long ID_JUDECATOR = Long.parseLong(request.getParameter("Select_judecator_Update"));
 
             Judecator old_judecator = judecatorDAO.getJudecator(ID_JUDECATOR);
 
@@ -70,14 +70,15 @@ public class JudecatorController extends HttpServlet
                     LocalDate.parse(EXPIRARE_MANDAT_STR, dateFormat);
 
             judecatorDAO.updateJudecator(ID_JUDECATOR, CNP, NUME, PRENUME, SPECIALIZARE, TELEFON, EMAIL, PRELUARE_MANDAT, EXPIRARE_MANDAT);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("index.html");
-            dispatcher.forward(request, response);
+            response.sendRedirect("Judecatori?displayJudecatori=Tabelul+cu+judecători");
         }
-    }
-
-    @Override
-    protected void doPost(@NotNull HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
-    {
+        if (request.getParameter("deleteJudecator") != null)
+        {
+            Long ID_JUDECATOR = Long.parseLong(request.getParameter("Select_judecator_Delete"));
+            judecator.setID_JUDECATOR(ID_JUDECATOR);
+            judecatorDAO.deleteJudecator(judecator);
+            response.sendRedirect("Judecatori?displayJudecatori=Tabelul+cu+judecători");
+        }
         if (request.getParameter("displayJudecatori") != null)
         {
             List<Judecator> judecatorList = judecatorDAO.displayJudecatori();
@@ -85,13 +86,11 @@ public class JudecatorController extends HttpServlet
             RequestDispatcher dispatcher = request.getRequestDispatcher("displayJudecatori.jsp");
             dispatcher.forward(request, response);
         }
-        if (request.getParameter("deleteJudecator") != null)
-        {
-            Long ID_JUDECATOR = Long.parseLong(request.getParameter("ID_JUDECATOR"));
-            judecator.setID_JUDECATOR(ID_JUDECATOR);
-            judecatorDAO.deleteJudecator(judecator);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("deleteJudecator.jsp");
-            dispatcher.forward(request, response);
-        }
+    }
+
+    @Override
+    protected void doPost(@NotNull HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    {
+
     }
 }

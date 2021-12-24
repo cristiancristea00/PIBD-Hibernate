@@ -11,6 +11,7 @@
         <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
         <property name="hibernate.connection.username">pibd</property>
         <property name="hibernate.connection.password">PIBD_Project_420$</property>
+        <property name="hibernate.enable_lazy_load_no_trans">true</property>
         <mapping resource="Judecator.hbm.xml"/>
         <mapping resource="Proces.hbm.xml"/>
         <mapping resource="Programare.hbm.xml"/>
