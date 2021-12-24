@@ -31,70 +31,70 @@ public class ProgramareController extends HttpServlet
     {
         if (request.getParameter("addProgramare") != null)
         {
-            Long ID_JUDECATOR = Long.parseLong(request.getParameter("ID_JUDECATOR"));
-            Long ID_PROCES = Long.parseLong(request.getParameter("ID_PROCES"));
+            Long ID_JUDECATOR = Long.parseLong(request.getParameter("ID_Judecator_add"));
+            Long ID_PROCES = Long.parseLong(request.getParameter("ID_Proces_add"));
             Session session = HibernateUtil.getSessionFactory().openSession();
             programare.setJUDECATOR(session.get(Judecator.class, ID_JUDECATOR));
             programare.setPROCES(session.get(Proces.class, ID_PROCES));
             session.close();
 
-            programare.setORAS(request.getParameter("ORAS"));
-            programare.setLOCATIE(request.getParameter("LOCATIE"));
-            programare.setSALA(request.getParameter("SALA"));
+            programare.setORAS(request.getParameter("Oras_add"));
+            programare.setLOCATIE(request.getParameter("Locatie_add"));
+            programare.setSALA(request.getParameter("Sala_add"));
 
             DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd.MM.yyyy");
-            programare.setDATA(LocalDate.parse(request.getParameter("DATA"), dateFormat));
+            programare.setDATA(LocalDate.parse(request.getParameter("Data_add"), dateFormat));
 
             DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("HH:mm");
-            programare.setORA(LocalTime.parse(request.getParameter("ORA"), timeFormat));
+            programare.setORA(LocalTime.parse(request.getParameter("Ora_add"), timeFormat));
 
             programareDAO.addProgramare(programare);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("addProgramare.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("index.html");
             dispatcher.forward(request, response);
         }
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
-    {
-        if (request.getParameter("displayProgramari") != null)
+        if (request.getParameter("updateProgramare") != null)
         {
-            List<Programare> programareList = programareDAO.displayProgramari();
-            request.setAttribute("programareList", programareList);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("displayProgramari.jsp");
-            dispatcher.forward(request, response);
+            Long ID_PROGRAMARE = Long.parseLong(request.getParameter("Select_programare_Update"));
+            Programare programare = programareDAO.getProgramare(ID_PROGRAMARE);
+
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            Long ID_JUDECATOR = Long.parseLong(request.getParameter("ID_Judecator_update"));
+            Long ID_PROCES = Long.parseLong(request.getParameter("ID_Proces_update"));
+            Judecator JUDECATOR = session.get(Judecator.class, ID_JUDECATOR);
+            Proces PROCES = session.get(Proces.class, ID_PROCES);
+            session.close();
+
+            String ORAS = request.getParameter("Oras_update");
+            ORAS = ORAS.length() == 0 ? programare.getORAS() : ORAS;
+            String LOCATIE = request.getParameter("Locatie_update");
+            LOCATIE = LOCATIE.length() == 0 ? programare.getLOCATIE() : LOCATIE;
+            String SALA = request.getParameter("Sala_update");
+            SALA = SALA.length() == 0 ? programare.getSALA() : SALA;
+
+            DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+            String DATA_STR = request.getParameter("Data_update");
+            LocalDate DATA = DATA_STR.length() == 0 ? programare.getDATA() : LocalDate.parse(DATA_STR, dateFormat);
+
+            DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("HH:mm");
+            String ORA_STR = request.getParameter("Ora_update");
+            LocalTime ORA = ORA_STR.length() == 0 ? programare.getORA() : LocalTime.parse(ORA_STR, timeFormat);
+
+            programareDAO.updateProgramare(ID_PROGRAMARE, JUDECATOR, PROCES, ORAS, LOCATIE, SALA, DATA, ORA);
+            response.sendRedirect("Programari?displayProgramari=Tabelul+cu+programări");
         }
         if (request.getParameter("deleteProgramare") != null)
         {
             Long ID_PROGRAMARE = Long.parseLong(request.getParameter("ID_PROGRAMARE"));
             programare.setID_PROGRAMARE(ID_PROGRAMARE);
             programareDAO.deleteProgramare(programare);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("deleteProgramare.jsp");
-            dispatcher.forward(request, response);
+            response.sendRedirect("Programari?displayProgramari=Tabelul+cu+programări");
         }
-        if (request.getParameter("updateProgramare") != null)
+        if (request.getParameter("displayProgramari") != null)
         {
-            Long ID_PROGRAMARE = Long.parseLong(request.getParameter("ID_PROGRAMARE"));
-            Session session = HibernateUtil.getSessionFactory().openSession();
-            Long ID_JUDECATOR = Long.parseLong(request.getParameter("ID_JUDECATOR"));
-            Long ID_PROCES = Long.parseLong(request.getParameter("ID_PROCES"));
-            Judecator JUDECATOR = session.get(Judecator.class, ID_JUDECATOR);
-            Proces PROCES = session.get(Proces.class, ID_PROCES);
-
-            String ORAS = request.getParameter("ORAS");
-            String LOCATIE = request.getParameter("LOCATIE");
-            String SALA = request.getParameter("SALA");
-
-            DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd.MM.yyyy");
-            LocalDate DATA = LocalDate.parse(request.getParameter("DATA"), dateFormat);
-
-            DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("HH:mm");
-            LocalTime ORA = LocalTime.parse(request.getParameter("ORA"), timeFormat);
-
-            programareDAO.updateProgramare(ID_PROGRAMARE, JUDECATOR, PROCES, ORAS, LOCATIE, SALA, DATA, ORA);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("updateProgramare.jsp");
+            List<Programare> programareList = programareDAO.displayProgramari();
+            request.setAttribute("programareList", programareList);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("displayProgramari.jsp");
             dispatcher.forward(request, response);
-            session.close();
         }
     }
 }

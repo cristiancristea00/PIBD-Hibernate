@@ -52,6 +52,15 @@ public class ProgramareDAOImpl implements ProgramareDAO
     }
 
     @Override
+    public Programare getProgramare(Long ID_PROGRAMARE)
+    {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Programare programare = session.load(Programare.class, ID_PROGRAMARE);
+        session.close();
+        return programare;
+    }
+
+    @Override
     public List<Programare> displayProgramari()
     {
         Session session = HibernateUtil.getSessionFactory().openSession();

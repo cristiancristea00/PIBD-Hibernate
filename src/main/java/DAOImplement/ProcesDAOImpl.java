@@ -47,6 +47,15 @@ public class ProcesDAOImpl implements ProcesDAO
     }
 
     @Override
+    public Proces getProces(Long ID_PROCES)
+    {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Proces proces = session.load(Proces.class, ID_PROCES);
+        session.close();
+        return proces;
+    }
+
+    @Override
     public List<Proces> displayProcese()
     {
         Session session = HibernateUtil.getSessionFactory().openSession();

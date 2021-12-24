@@ -15,5 +15,7 @@ public interface ProgramareDAO
     void updateProgramare(Long ID_PROGRAMARE, Judecator JUDECATOR, Proces PROCES, String ORAS, String LOCATIE, String SALA, @NotNull LocalDate DATA,
                           @NotNull LocalTime ORA);
 
+    Programare getProgramare(Long ID_PROGRAMARE);
+
     List<Programare> displayProgramari();
 }

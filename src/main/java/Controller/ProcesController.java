@@ -9,6 +9,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+
 import java.io.IOException;
 import java.util.List;
 
@@ -22,49 +23,50 @@ public class ProcesController extends HttpServlet
     {
         if (request.getParameter("addProces") != null)
         {
-            proces.setNUMAR(request.getParameter("NUMAR"));
-            proces.setOBIECT(request.getParameter("OBIECT"));
-            proces.setMATERIE_JURIDICA(request.getParameter("MATERIE_JURIDICA"));
-            proces.setSTADIU_PROCESUAL(request.getParameter("STADIU_PROCESUAL"));
-            proces.setRECLAMANT(request.getParameter("RECLAMANT"));
-            proces.setPARAT(request.getParameter("PARAT"));
+            proces.setNUMAR(request.getParameter("Numar_add"));
+            proces.setOBIECT(request.getParameter("Obiect_add"));
+            proces.setMATERIE_JURIDICA(request.getParameter("Materie_Juridica_add"));
+            proces.setSTADIU_PROCESUAL(request.getParameter("Stadiu_Procesual_add"));
+            proces.setRECLAMANT(request.getParameter("Reclamant_add"));
+            proces.setPARAT(request.getParameter("Parat_add"));
 
             procesDAO.addProces(proces);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("addProces.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("index.html");
             dispatcher.forward(request, response);
         }
-    }
+        if (request.getParameter("updateProces") != null)
+        {
+            Long ID_PROCES = Long.parseLong(request.getParameter("Select_proces_Update"));
+            Proces old_proces = procesDAO.getProces(ID_PROCES);
 
-    @Override
-    protected void doPost(@NotNull HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
-    {
+            String NUMAR = request.getParameter("Numar_update");
+            NUMAR = NUMAR.length() == 0 ? old_proces.getNUMAR() : NUMAR;
+            String OBIECT = request.getParameter("Obiect_update");
+            OBIECT = OBIECT.length() == 0 ? old_proces.getOBIECT() : OBIECT;
+            String MATERIE_JURIDICA = request.getParameter("Majerie_juridica_update");
+            MATERIE_JURIDICA = MATERIE_JURIDICA.length() == 0 ? old_proces.getMATERIE_JURIDICA() : MATERIE_JURIDICA;
+            String STADIU_PROCESUAL = request.getParameter("Satdiu_procesual_update");
+            STADIU_PROCESUAL = STADIU_PROCESUAL.length() == 0 ? old_proces.getSTADIU_PROCESUAL() : STADIU_PROCESUAL;
+            String RECLAMANT = request.getParameter("Reclamant_update");
+            RECLAMANT = RECLAMANT.length() == 0 ? old_proces.getRECLAMANT() : RECLAMANT;
+            String PARAT = request.getParameter("Parat_update");
+            PARAT = PARAT.length() == 0 ? old_proces.getPARAT() : PARAT;
+
+            procesDAO.updateProces(ID_PROCES, NUMAR, OBIECT, MATERIE_JURIDICA, STADIU_PROCESUAL, RECLAMANT, PARAT);
+            response.sendRedirect("Procese?displayProcese=Tabelul+cu+procese");
+        }
+        if (request.getParameter("deleteProces") != null)
+        {
+            Long ID_PROCES = Long.parseLong(request.getParameter("Select_proces_Delete"));
+            proces.setID_PROCES(ID_PROCES);
+            procesDAO.deleteProces(proces);
+            response.sendRedirect("Procese?displayProcese=Tabelul+cu+procese");
+        }
         if (request.getParameter("displayProcese") != null)
         {
             List<Proces> procese = procesDAO.displayProcese();
             request.setAttribute("procesList", procese);
             RequestDispatcher dispatcher = request.getRequestDispatcher("displayProcese.jsp");
-            dispatcher.forward(request, response);
-        }
-        if (request.getParameter("deleteProces") != null)
-        {
-            Long ID_PROCES = Long.parseLong(request.getParameter("ID_PROCES"));
-            proces.setID_PROCES(ID_PROCES);
-            procesDAO.deleteProces(proces);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("deleteProces.jsp");
-            dispatcher.forward(request, response);
-        }
-        if (request.getParameter("updateProces") != null)
-        {
-            Long ID_PROCES = Long.parseLong(request.getParameter("ID_PROCES"));
-            String NUMAR = request.getParameter("NUMAR");
-            String OBIECT = request.getParameter("OBIECT");
-            String MATERIE_JURIDICA = request.getParameter("MATERIE_JURIDICA");
-            String STADIU_PROCESUAL = request.getParameter("STADIU_PROCESUAL");
-            String RECLAMANT = request.getParameter("RECLAMANT");
-            String PARAT = request.getParameter("PARAT");
-
-            procesDAO.updateProces(ID_PROCES, NUMAR, OBIECT, MATERIE_JURIDICA, STADIU_PROCESUAL, RECLAMANT, PARAT);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("updateProces.jsp");
             dispatcher.forward(request, response);
         }
     }

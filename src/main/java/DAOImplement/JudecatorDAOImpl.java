@@ -52,20 +52,20 @@ public class JudecatorDAOImpl implements JudecatorDAO
     }
 
     @Override
-    public List<Judecator> displayJudecatori()
-    {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        List<Judecator> judecatorList = session.createQuery("from Judecator").list();
-        session.close();
-        return judecatorList;
-    }
-
-    @Override
     public Judecator getJudecator(Long ID_JUDECATOR)
     {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Judecator judecator = session.load(Judecator.class, ID_JUDECATOR);
         session.close();
         return judecator;
+    }
+
+    @Override
+    public List<Judecator> displayJudecatori()
+    {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        List<Judecator> judecatorList = session.createQuery("from Judecator").list();
+        session.close();
+        return judecatorList;
     }
 }
