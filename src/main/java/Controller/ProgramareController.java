@@ -1,21 +1,19 @@
 package Controller;
 
-import DAOImplement.ProgramareDAOImpl;
 import DAOImplement.HibernateUtil;
+import DAOImplement.ProgramareDAOImpl;
 import JavaBean.Judecator;
 import JavaBean.Proces;
 import JavaBean.Programare;
-import org.hibernate.Session;
-
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.hibernate.Session;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
-import java.sql.Date;
-import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -27,7 +25,7 @@ public class ProgramareController extends HttpServlet
     ProgramareDAOImpl programareDAO = new ProgramareDAOImpl();
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    protected void doGet(@NotNull HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         if (request.getParameter("addProgramare") != null)
         {
@@ -42,14 +40,14 @@ public class ProgramareController extends HttpServlet
             programare.setLOCATIE(request.getParameter("Locatie_add"));
             programare.setSALA(request.getParameter("Sala_add"));
 
-            DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+            DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd");
             programare.setDATA(LocalDate.parse(request.getParameter("Data_add"), dateFormat));
 
             DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("HH:mm");
             programare.setORA(LocalTime.parse(request.getParameter("Ora_add"), timeFormat));
 
             programareDAO.addProgramare(programare);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("index.html");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
             dispatcher.forward(request, response);
         }
         if (request.getParameter("updateProgramare") != null)
@@ -71,7 +69,7 @@ public class ProgramareController extends HttpServlet
             String SALA = request.getParameter("Sala_update");
             SALA = SALA.length() == 0 ? programare.getSALA() : SALA;
 
-            DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+            DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd");
             String DATA_STR = request.getParameter("Data_update");
             LocalDate DATA = DATA_STR.length() == 0 ? programare.getDATA() : LocalDate.parse(DATA_STR, dateFormat);
 

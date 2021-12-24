@@ -35,7 +35,7 @@
     </session-config>
     <welcome-file-list>
         <welcome-file>
-            index.html
+            index.jsp
         </welcome-file>
     </welcome-file-list>
 </web-app>

@@ -2,16 +2,14 @@ package Controller;
 
 import DAOImplement.JudecatorDAOImpl;
 import JavaBean.Judecator;
-import org.jetbrains.annotations.NotNull;
-
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
-import java.sql.Date;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -38,7 +36,7 @@ public class JudecatorController extends HttpServlet
             judecator.setEXPIRARE_MANDAT(LocalDate.parse(request.getParameter("Expirare_mandat_add"), dateFormat));
 
             judecatorDAO.addJudecator(judecator);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("index.html");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
             dispatcher.forward(request, response);
         }
         if (request.getParameter("updateJudecator") != null)

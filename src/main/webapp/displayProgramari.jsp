@@ -75,7 +75,7 @@
         </div>
 
         <div class="col-sm text-center menu">
-            <button class="btn btn-primary btn-lg m-2 fix-button" onclick="location.href='index.html';" value="Home">
+            <button class="btn btn-primary btn-lg m-2 fix-button" onclick="location.href='index.jsp';" value="Home">
                 Home
             </button>
         </div>

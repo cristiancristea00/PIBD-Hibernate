@@ -25,13 +25,13 @@ public class ProcesController extends HttpServlet
         {
             proces.setNUMAR(request.getParameter("Numar_add"));
             proces.setOBIECT(request.getParameter("Obiect_add"));
-            proces.setMATERIE_JURIDICA(request.getParameter("Materie_Juridica_add"));
-            proces.setSTADIU_PROCESUAL(request.getParameter("Stadiu_Procesual_add"));
+            proces.setMATERIE_JURIDICA(request.getParameter("Materie_juridica_add"));
+            proces.setSTADIU_PROCESUAL(request.getParameter("Stadiu_procesual_add"));
             proces.setRECLAMANT(request.getParameter("Reclamant_add"));
             proces.setPARAT(request.getParameter("Parat_add"));
 
             procesDAO.addProces(proces);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("index.html");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
             dispatcher.forward(request, response);
         }
         if (request.getParameter("updateProces") != null)
