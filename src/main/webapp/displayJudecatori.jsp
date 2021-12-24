@@ -108,9 +108,8 @@
             <form autocomplete="on" action="Judecatori" method="GET">
                 <div class="modal-body">
 
-
-                    <div class="row">
-                        <div class="col">
+                    <div class="row g-3">
+                        <div class="col-12">
                             <div class="form-floating">
                                 <select type="text" class="form-control" name="Select_judecator_Update" aria-label="Select judecator"
                                         id="Select_judecator_Update">
@@ -122,10 +121,8 @@
                                 <label for="Specializare_update">Judecător</label>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="row">
-                        <div class="col">
+                        <div class="col-md-6">
                             <div class="form-floating">
                                 <input type="text" class="form-control" name="Prenume_update" placeholder="Prenume" aria-label="Prenume"
                                        id="Prenume_update"
@@ -133,47 +130,39 @@
                                 <label for="Prenume_update">Prenume</label>
                             </div>
                         </div>
-                        <div class="col">
+                        <div class="col-md-6">
                             <div class="form-floating">
                                 <input type="text" class="form-control" name="Nume_update" placeholder="Nume" aria-label="Nume" id="Nume_update"
                                        maxlength="50" autocomplete="family-name">
                                 <label for="Nume_update">Nume</label>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="row">
-                        <div class="col">
+                        <div class="col-12">
                             <div class="form-floating">
                                 <input type="text" class="form-control" name="CNP_update" placeholder="Cod Numeric Personal (CNP)" aria-label="CNP"
                                        id="CNP_update" maxlength="13">
                                 <label for="CNP_update">Cod Numeric Personal (CNP)</label>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="row">
-                        <div class="col">
+                        <div class="col-12">
                             <div class="form-floating">
                                 <input type="tel" class="form-control" name="Telefon_update" placeholder="Telefon" aria-label="Telefon"
                                        id="Telefon_update" autocomplete="tel" maxlength="13">
                                 <label for="Telefon_update">Telefon</label>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="row">
-                        <div class="col">
+                        <div class="col-12">
                             <div class="form-floating">
                                 <input type="email" class="form-control" name="Email_update" placeholder="Email" aria-label="Email" id="Email_update"
                                        autocomplete="email" maxlength="50">
                                 <label for="Email_update">Email</label>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="row">
-                        <div class="col">
+                        <div class="col-12">
                             <div class="form-floating">
                                 <select type="text" class="form-control" name="Specializare_update" aria-label="Specializare"
                                         id="Specializare_update">
@@ -197,17 +186,15 @@
                                 <label for="Specializare_update">Specializare</label>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="row">
-                        <div class="col">
+                        <div class="col-md-6">
                             <div class="form-floating">
                                 <input type="date" class="form-control" name="Preluare_mandat_update" placeholder="Preluare mandat"
                                        aria-label="Preluare mandat" id="Preluare_mandat_update">
                                 <label for="Preluare_mandat_update">Preluare mandat</label>
                             </div>
                         </div>
-                        <div class="col">
+                        <div class="col-md-6">
                             <div class="form-floating">
                                 <input type="date" class="form-control" name="Expirare_mandat_update" placeholder="Expirare mandat"
                                        aria-label="Expirare mandat" id="Expirare_mandat_update">
@@ -239,8 +226,8 @@
             <form autocomplete="on" action="Judecatori" method="GET">
                 <div class="modal-body">
 
-                    <div class="row">
-                        <div class="col">
+                    <div class="row g-3">
+                        <div class="col-12">
                             <div class="form-floating">
                                 <select type="text" class="form-control" name="Select_judecator_Delete" aria-label="Select judecator"
                                         id="Select_judecator_Delete">

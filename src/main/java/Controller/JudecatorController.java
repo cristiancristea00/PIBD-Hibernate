@@ -44,7 +44,6 @@ public class JudecatorController extends HttpServlet
         if (request.getParameter("updateJudecator") != null)
         {
             Long ID_JUDECATOR = Long.parseLong(request.getParameter("Select_judecator_Update"));
-
             Judecator old_judecator = judecatorDAO.getJudecator(ID_JUDECATOR);
 
             String CNP = request.getParameter("CNP_update");
@@ -86,11 +85,5 @@ public class JudecatorController extends HttpServlet
             RequestDispatcher dispatcher = request.getRequestDispatcher("displayJudecatori.jsp");
             dispatcher.forward(request, response);
         }
-    }
-
-    @Override
-    protected void doPost(@NotNull HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
-    {
-
     }
 }
