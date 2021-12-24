@@ -5,28 +5,28 @@
         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
         version="5.0">
     <servlet>
-        <servlet-name>JudecatorController</servlet-name>
+        <servlet-name>Judecatori</servlet-name>
         <servlet-class>Controller.JudecatorController</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>JudecatorController</servlet-name>
-        <url-pattern>/JudecatorController</url-pattern>
+        <servlet-name>Judecatori</servlet-name>
+        <url-pattern>/Judecatori</url-pattern>
     </servlet-mapping>
     <servlet>
-        <servlet-name>ProcesController</servlet-name>
+        <servlet-name>Procese</servlet-name>
         <servlet-class>Controller.ProcesController</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>ProcesController</servlet-name>
-        <url-pattern>/ProcesController</url-pattern>
+        <servlet-name>Procese</servlet-name>
+        <url-pattern>/Procese</url-pattern>
     </servlet-mapping>
     <servlet>
-        <servlet-name>ProgramareController</servlet-name>
+        <servlet-name>Programari</servlet-name>
         <servlet-class>Controller.ProgramareController</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>ProgramareController</servlet-name>
-        <url-pattern>/ProgramareController</url-pattern>
+        <servlet-name>Programari</servlet-name>
+        <url-pattern>/Programari</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

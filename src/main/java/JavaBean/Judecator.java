@@ -14,7 +14,8 @@ public class Judecator implements Serializable
     private String CNP;
     private String NUME;
     private String PRENUME;
-    private LocalDate DATA_NASTERII;
+    private String TELEFON;
+    private String EMAIL;
     private String SPECIALIZARE;
     private LocalDate PRELUARE_MANDAT;
     private LocalDate EXPIRARE_MANDAT;
@@ -24,14 +25,15 @@ public class Judecator implements Serializable
     {
     }
 
-    public Judecator(Long ID_JUDECATOR, String CNP, String NUME, String PRENUME, LocalDate DATA_NASTERII, String SPECIALIZARE,
+    public Judecator(Long ID_JUDECATOR, String CNP, String NUME, String PRENUME, String TELEFON, String EMAIL, String SPECIALIZARE,
                      LocalDate PRELUARE_MANDAT, LocalDate EXPIRARE_MANDAT, Set<Programare> PROGRAMARI)
     {
         this.ID_JUDECATOR = ID_JUDECATOR;
         this.CNP = CNP;
         this.NUME = NUME;
         this.PRENUME = PRENUME;
-        this.DATA_NASTERII = DATA_NASTERII;
+        this.TELEFON = TELEFON;
+        this.EMAIL = EMAIL;
         this.SPECIALIZARE = SPECIALIZARE;
         this.PRELUARE_MANDAT = PRELUARE_MANDAT;
         this.EXPIRARE_MANDAT = EXPIRARE_MANDAT;
@@ -44,10 +46,11 @@ public class Judecator implements Serializable
         this.CNP = judecator.getCNP();
         this.NUME = judecator.getNUME();
         this.PRENUME = judecator.getPRENUME();
-        this.DATA_NASTERII = judecator.getDATA_NASTERII().toLocalDate();
+        this.TELEFON = judecator.getTELEFON();
+        this.EMAIL = judecator.getEMAIL();
         this.SPECIALIZARE = judecator.getSPECIALIZARE();
-        this.PRELUARE_MANDAT = judecator.getPRELUARE_MANDAT().toLocalDate();
-        this.EXPIRARE_MANDAT = judecator.getEXPIRARE_MANDAT().toLocalDate();
+        this.PRELUARE_MANDAT = judecator.getPRELUARE_MANDAT();
+        this.EXPIRARE_MANDAT = judecator.getEXPIRARE_MANDAT();
         this.PROGRAMARI = new HashSet<>(judecator.getPROGRAMARI());
     }
 
@@ -91,14 +94,24 @@ public class Judecator implements Serializable
         this.PRENUME = PRENUME;
     }
 
-    public Date getDATA_NASTERII()
+    public String getTELEFON()
     {
-        return Date.valueOf(DATA_NASTERII);
+        return TELEFON;
     }
 
-    public void setDATA_NASTERII(@NotNull Date DATA_NASTERII)
+    public void setTELEFON(String TELEFON)
     {
-        this.DATA_NASTERII = DATA_NASTERII.toLocalDate();
+        this.TELEFON = TELEFON;
+    }
+
+    public String getEMAIL()
+    {
+        return EMAIL;
+    }
+
+    public void setEMAIL(String EMAIL)
+    {
+        this.EMAIL = EMAIL;
     }
 
     public String getSPECIALIZARE()
@@ -111,24 +124,24 @@ public class Judecator implements Serializable
         this.SPECIALIZARE = SPECIALIZARE;
     }
 
-    public Date getPRELUARE_MANDAT()
+    public LocalDate getPRELUARE_MANDAT()
     {
-        return Date.valueOf(PRELUARE_MANDAT);
+        return PRELUARE_MANDAT;
     }
 
-    public void setPRELUARE_MANDAT(Date PRELUARE_MANDAT)
+    public void setPRELUARE_MANDAT(LocalDate PRELUARE_MANDAT)
     {
-        this.PRELUARE_MANDAT = PRELUARE_MANDAT.toLocalDate();
+        this.PRELUARE_MANDAT = PRELUARE_MANDAT;
     }
 
-    public Date getEXPIRARE_MANDAT()
+    public LocalDate getEXPIRARE_MANDAT()
     {
-        return Date.valueOf(EXPIRARE_MANDAT);
+        return EXPIRARE_MANDAT;
     }
 
-    public void setEXPIRARE_MANDAT(@NotNull Date EXPIRARE_MANDAT)
+    public void setEXPIRARE_MANDAT(LocalDate EXPIRARE_MANDAT)
     {
-        this.EXPIRARE_MANDAT = EXPIRARE_MANDAT.toLocalDate();
+        this.EXPIRARE_MANDAT = EXPIRARE_MANDAT;
     }
 
     public Set<Programare> getPROGRAMARI()

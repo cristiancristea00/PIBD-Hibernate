@@ -22,10 +22,10 @@
         <property name="SALA" type="java.lang.String">
             <column name="SALA" sql-type="VARCHAR" length="10" not-null="true"/>
         </property>
-        <property name="DATA" type="java.sql.Date">
+        <property name="DATA" type="java.time.LocalDate">
             <column name="DATĂ" sql-type="DATE" not-null="true"/>
         </property>
-        <property name="ORA" type="java.sql.Time">
+        <property name="ORA" type="java.time.LocalTime">
             <column name="ORĂ" sql-type="TIME" not-null="true"/>
         </property>
     </class>

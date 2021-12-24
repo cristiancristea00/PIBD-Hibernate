@@ -12,6 +12,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+
 import java.io.IOException;
 import java.sql.Date;
 import java.sql.Time;
@@ -42,10 +43,10 @@ public class ProgramareController extends HttpServlet
             programare.setSALA(request.getParameter("SALA"));
 
             DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd.MM.yyyy");
-            programare.setDATA(Date.valueOf(LocalDate.parse(request.getParameter("DATA"), dateFormat)));
+            programare.setDATA(LocalDate.parse(request.getParameter("DATA"), dateFormat));
 
             DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("HH:mm");
-            programare.setORA(Time.valueOf(LocalTime.parse(request.getParameter("ORA"), timeFormat)));
+            programare.setORA(LocalTime.parse(request.getParameter("ORA"), timeFormat));
 
             programareDAO.addProgramare(programare);
             RequestDispatcher dispatcher = request.getRequestDispatcher("addProgramare.jsp");

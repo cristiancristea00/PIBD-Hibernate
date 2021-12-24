@@ -16,16 +16,19 @@
         <property name="PRENUME" type="java.lang.String">
             <column name="PRENUME" sql-type="VARCHAR" length="50" not-null="true"/>
         </property>
-        <property name="DATA_NASTERII" type="java.sql.Date">
-            <column name="DATA_NAȘTERII" sql-type="DATE" not-null="true"/>
+        <property name="TELEFON" type="java.lang.String">
+            <column name="TELEFON" sql-type="VARCHAR" length="13" not-null="true" unique="true"/>
+        </property>
+        <property name="EMAIL" type="java.lang.String">
+            <column name="EMAIL" sql-type="VARCHAR" length="50" not-null="true" unique="true"/>
         </property>
         <property name="SPECIALIZARE" type="java.lang.String">
             <column name="SPECIALIZARE" sql-type="VARCHAR" length="50" not-null="true"/>
         </property>
-        <property name="PRELUARE_MANDAT" type="java.sql.Date">
+        <property name="PRELUARE_MANDAT" type="java.time.LocalDate">
             <column name="PRELUARE_MANDAT" sql-type="DATE" not-null="true"/>
         </property>
-        <property name="EXPIRARE_MANDAT" type="java.sql.Date">
+        <property name="EXPIRARE_MANDAT" type="java.time.LocalDate">
             <column name="EXPIRARE_MANDAT" sql-type="DATE" not-null="true"/>
         </property>
         <set name="PROGRAMARI" table="PROGRAMARI" inverse="true" lazy="true" fetch="select">

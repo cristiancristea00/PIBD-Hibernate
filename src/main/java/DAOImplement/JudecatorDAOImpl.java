@@ -32,7 +32,7 @@ public class JudecatorDAOImpl implements JudecatorDAO
     }
 
     @Override
-    public void updateJudecator(Long ID_JUDECATOR, String CNP, String NUME, String PRENUME, LocalDate DATA_NASTERII, String SPECIALIZARE,
+    public void updateJudecator(Long ID_JUDECATOR, String CNP, String NUME, String PRENUME, String TELEFON, String EMAIL, String SPECIALIZARE,
                                 LocalDate PRELUARE_MANDAT, LocalDate EXPIRARE_MANDAT)
     {
         Session session = HibernateUtil.getSessionFactory().openSession();
@@ -41,10 +41,11 @@ public class JudecatorDAOImpl implements JudecatorDAO
         judecator.setCNP(CNP);
         judecator.setNUME(NUME);
         judecator.setPRENUME(PRENUME);
-        judecator.setDATA_NASTERII(Date.valueOf(DATA_NASTERII));
+        judecator.setTELEFON(TELEFON);
+        judecator.setEMAIL(EMAIL);
         judecator.setSPECIALIZARE(SPECIALIZARE);
-        judecator.setPRELUARE_MANDAT(Date.valueOf(PRELUARE_MANDAT));
-        judecator.setEXPIRARE_MANDAT(Date.valueOf(EXPIRARE_MANDAT));
+        judecator.setPRELUARE_MANDAT(PRELUARE_MANDAT);
+        judecator.setEXPIRARE_MANDAT(EXPIRARE_MANDAT);
         session.update(judecator);
         transaction.commit();
         session.close();
@@ -57,5 +58,16 @@ public class JudecatorDAOImpl implements JudecatorDAO
         List<Judecator> judecatorList = session.createQuery("from Judecator").list();
         session.close();
         return judecatorList;
+    }
+
+    @Override
+    public Judecator getJudecator(Long ID_JUDECATOR)
+    {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction transaction = session.beginTransaction();
+        Judecator judecator = session.load(Judecator.class, ID_JUDECATOR);
+        transaction.commit();
+        session.close();
+        return judecator;
     }
 }

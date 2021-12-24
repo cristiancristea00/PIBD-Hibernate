@@ -44,8 +44,8 @@ public class ProgramareDAOImpl implements ProgramareDAO
         programare.setORAS(ORAS);
         programare.setLOCATIE(LOCATIE);
         programare.setSALA(SALA);
-        programare.setDATA(Date.valueOf(DATA));
-        programare.setORA(Time.valueOf(ORA));
+        programare.setDATA(DATA);
+        programare.setORA(ORA);
         session.update(programare);
         transaction.commit();
         session.close();

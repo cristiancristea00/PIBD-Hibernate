@@ -29,7 +29,7 @@
         {
             $('#procese_table').DataTable(
                 {
-                    pageLength: 25,
+                    pageLength: 10,
                     "language": {
                         "decimal": ",",
                         "emptyTable": "Nu există date în tabel",
@@ -63,9 +63,9 @@
     Procese
 </div>
 
-<p class="text-center">
-    <a href="index.html"><b>Home</b></a>
-</p>
+<div class="m-2 header">
+    <a href="index.html">Home</a>
+</div>
 
 <div class="m-5">
     <table id="procese_table" class="table table-striped cell-border">

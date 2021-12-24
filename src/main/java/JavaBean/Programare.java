@@ -82,23 +82,23 @@ public class Programare implements Serializable
         this.SALA = SALA;
     }
 
-    public Date getDATA()
+    public LocalDate getDATA()
     {
-        return Date.valueOf(DATA);
+        return DATA;
     }
 
-    public void setDATA(@NotNull Date DATA)
+    public void setDATA(LocalDate DATA)
     {
-        this.DATA = DATA.toLocalDate();
+        this.DATA = DATA;
     }
 
-    public Time getORA()
+    public LocalTime getORA()
     {
-        return Time.valueOf(ORA);
+        return ORA;
     }
 
-    public void setORA(@NotNull Time ORA)
+    public void setORA(LocalTime ORA)
     {
-        this.ORA = ORA.toLocalTime();
+        this.ORA = ORA;
     }
 }

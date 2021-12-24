@@ -9,6 +9,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+
 import java.io.IOException;
 import java.sql.Date;
 import java.time.LocalDate;
@@ -25,18 +26,51 @@ public class JudecatorController extends HttpServlet
     {
         if (request.getParameter("addJudecator") != null)
         {
-            judecator.setCNP(request.getParameter("CNP"));
-            judecator.setNUME(request.getParameter("NUME"));
-            judecator.setPRENUME(request.getParameter("PRENUME"));
-            judecator.setSPECIALIZARE(request.getParameter("SPECIALIZARE"));
+            judecator.setCNP(request.getParameter("CNP_add"));
+            judecator.setNUME(request.getParameter("Nume_add"));
+            judecator.setPRENUME(request.getParameter("Prenume_add"));
+            judecator.setTELEFON(request.getParameter("Telefon_add"));
+            judecator.setEMAIL(request.getParameter("Email_add"));
+            judecator.setSPECIALIZARE(request.getParameter("Specializare_add"));
 
-            DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd.MM.yyyy");
-            judecator.setDATA_NASTERII(Date.valueOf(LocalDate.parse(request.getParameter("DATA_NASTERII"), dateFormat)));
-            judecator.setPRELUARE_MANDAT(Date.valueOf(LocalDate.parse(request.getParameter("PRELUARE_MANDAT"), dateFormat)));
-            judecator.setEXPIRARE_MANDAT(Date.valueOf(LocalDate.parse(request.getParameter("EXPIRARE_MANDAT"), dateFormat)));
+            DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            judecator.setPRELUARE_MANDAT(LocalDate.parse(request.getParameter("Preluare_mandat_add"), dateFormat));
+            judecator.setEXPIRARE_MANDAT(LocalDate.parse(request.getParameter("Expirare_mandat_add"), dateFormat));
 
             judecatorDAO.addJudecator(judecator);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("addJudecator.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("index.html");
+            dispatcher.forward(request, response);
+        }
+        if (request.getParameter("updateJudecator") != null)
+        {
+            Long ID_JUDECATOR = Long.parseLong(request.getParameter("judecator"));
+
+            Judecator old_judecator = judecatorDAO.getJudecator(ID_JUDECATOR);
+
+            String CNP = request.getParameter("CNP_update");
+            CNP = CNP.length() == 0 ? old_judecator.getCNP() : CNP;
+            String NUME = request.getParameter("Nume_update");
+            NUME = NUME.length() == 0 ? old_judecator.getNUME() : NUME;
+            String PRENUME = request.getParameter("Prenume_update");
+            PRENUME = PRENUME.length() == 0 ? old_judecator.getPRENUME() : PRENUME;
+            String TELEFON = request.getParameter("Telefon_update");
+            TELEFON = TELEFON.length() == 0 ? old_judecator.getTELEFON() : TELEFON;
+            String EMAIL = request.getParameter("Email_update");
+            EMAIL = EMAIL.length() == 0 ? old_judecator.getEMAIL() : EMAIL;
+            String SPECIALIZARE = request.getParameter("Specializare_update");
+            SPECIALIZARE = SPECIALIZARE.length() == 0 ? old_judecator.getSPECIALIZARE() : SPECIALIZARE;
+
+            DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            String PRELUARE_MANDAT_STR = request.getParameter("Preluare_mandat_update");
+            String EXPIRARE_MANDAT_STR = request.getParameter("Expirare_mandat_update");
+
+            LocalDate PRELUARE_MANDAT = PRELUARE_MANDAT_STR.length() == 0 ? old_judecator.getPRELUARE_MANDAT() :
+                    LocalDate.parse(PRELUARE_MANDAT_STR, dateFormat);
+            LocalDate EXPIRARE_MANDAT = EXPIRARE_MANDAT_STR.length() == 0 ? old_judecator.getEXPIRARE_MANDAT() :
+                    LocalDate.parse(EXPIRARE_MANDAT_STR, dateFormat);
+
+            judecatorDAO.updateJudecator(ID_JUDECATOR, CNP, NUME, PRENUME, SPECIALIZARE, TELEFON, EMAIL, PRELUARE_MANDAT, EXPIRARE_MANDAT);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("index.html");
             dispatcher.forward(request, response);
         }
     }
@@ -57,23 +91,6 @@ public class JudecatorController extends HttpServlet
             judecator.setID_JUDECATOR(ID_JUDECATOR);
             judecatorDAO.deleteJudecator(judecator);
             RequestDispatcher dispatcher = request.getRequestDispatcher("deleteJudecator.jsp");
-            dispatcher.forward(request, response);
-        }
-        if (request.getParameter("updateJudecator") != null)
-        {
-            Long ID_JUDECATOR = Long.parseLong(request.getParameter("ID_JUDECATOR"));
-            String CNP = request.getParameter("CNP");
-            String NUME = request.getParameter("NUME");
-            String PRENUME = request.getParameter("PRENUME");
-            String SPECIALIZARE = request.getParameter("SPECIALIZARE");
-
-            DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd.MM.yyyy");
-            LocalDate DATA_NASTERII = LocalDate.parse(request.getParameter("DATA_NASTERII"), dateFormat);
-            LocalDate PRELUARE_MANDAT = LocalDate.parse(request.getParameter("PRELUARE_MANDAT"), dateFormat);
-            LocalDate EXPIRARE_MANDAT = LocalDate.parse(request.getParameter("EXPIRARE_MANDAT"), dateFormat);
-
-            judecatorDAO.updateJudecator(ID_JUDECATOR, CNP, NUME, PRENUME, DATA_NASTERII, SPECIALIZARE, PRELUARE_MANDAT, EXPIRARE_MANDAT);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("updateJudecator.jsp");
             dispatcher.forward(request, response);
         }
     }

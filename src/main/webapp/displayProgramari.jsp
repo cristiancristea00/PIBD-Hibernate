@@ -31,7 +31,7 @@
         {
             $('#programari_table').DataTable(
                 {
-                    pageLength: 25,
+                    pageLength: 10,
                     "language": {
                         "decimal": ",",
                         "emptyTable": "Nu există date în tabel",
@@ -65,8 +65,8 @@
     Programări
 </div>
 
-<div style="text-align: center;">
-    <a href="index.html"><b>Home</b></a>
+<div class="m-2 header">
+    <a href="index.html">Home</a>
 </div>
 
 <div class="m-5">
@@ -75,6 +75,7 @@
         <tr class="table-dark text-center align-middle">
             <th scope="col">Număr</th>
             <th scope="col">Nume</th>
+            <th scope="col">Telefon</th>
             <th scope="col">Obiect</th>
             <th scope="col">Materie juridică</th>
             <th scope="col">Stadiu procesual</th>
@@ -93,7 +94,8 @@
         <c:forEach var="PROGRAMARE" items="${programareList}">
             <tr class="align-middle">
                 <td class="text-center">${PROGRAMARE.PROCES.NUMAR}</td>
-                <td class="text-center">${PROGRAMARE.JUDECATOR.NUME} ${PROGRAMARE.JUDECATOR.PRENUME}</td>
+                <td class="text-center">${PROGRAMARE.JUDECATOR.PRENUME} ${PROGRAMARE.JUDECATOR.NUME}</td>
+                <td class="text-center">${PROGRAMARE.JUDECATOR.TELEFON}</td>
                 <td>${PROGRAMARE.PROCES.OBIECT}</td>
                 <td class="text-center">${PROGRAMARE.PROCES.MATERIE_JURIDICA}</td>
                 <td class="text-center">${PROGRAMARE.PROCES.STADIU_PROCESUAL}</td>
