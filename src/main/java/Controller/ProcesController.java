@@ -37,20 +37,20 @@ public class ProcesController extends HttpServlet
         else if (request.getParameter("updateProces") != null)
         {
             Long ID_PROCES = Long.parseLong(request.getParameter("Select_proces_Update"));
-            Proces old_proces = procesDAO.getProces(ID_PROCES);
+            proces = procesDAO.getProces(ID_PROCES);
 
             String NUMAR = request.getParameter("Numar_update");
-            NUMAR = NUMAR.length() == 0 ? old_proces.getNUMAR() : NUMAR;
+            NUMAR = NUMAR.length() == 0 ? proces.getNUMAR() : NUMAR;
             String OBIECT = request.getParameter("Obiect_update");
-            OBIECT = OBIECT.length() == 0 ? old_proces.getOBIECT() : OBIECT;
+            OBIECT = OBIECT.length() == 0 ? proces.getOBIECT() : OBIECT;
             String MATERIE_JURIDICA = request.getParameter("Majerie_juridica_update");
-            MATERIE_JURIDICA = MATERIE_JURIDICA.length() == 0 ? old_proces.getMATERIE_JURIDICA() : MATERIE_JURIDICA;
+            MATERIE_JURIDICA = MATERIE_JURIDICA.length() == 0 ? proces.getMATERIE_JURIDICA() : MATERIE_JURIDICA;
             String STADIU_PROCESUAL = request.getParameter("Satdiu_procesual_update");
-            STADIU_PROCESUAL = STADIU_PROCESUAL.length() == 0 ? old_proces.getSTADIU_PROCESUAL() : STADIU_PROCESUAL;
+            STADIU_PROCESUAL = STADIU_PROCESUAL.length() == 0 ? proces.getSTADIU_PROCESUAL() : STADIU_PROCESUAL;
             String RECLAMANT = request.getParameter("Reclamant_update");
-            RECLAMANT = RECLAMANT.length() == 0 ? old_proces.getRECLAMANT() : RECLAMANT;
+            RECLAMANT = RECLAMANT.length() == 0 ? proces.getRECLAMANT() : RECLAMANT;
             String PARAT = request.getParameter("Parat_update");
-            PARAT = PARAT.length() == 0 ? old_proces.getPARAT() : PARAT;
+            PARAT = PARAT.length() == 0 ? proces.getPARAT() : PARAT;
 
             procesDAO.updateProces(ID_PROCES, NUMAR, OBIECT, MATERIE_JURIDICA, STADIU_PROCESUAL, RECLAMANT, PARAT);
             response.sendRedirect("Procese?displayProcese=Tabelul+cu+procese");
