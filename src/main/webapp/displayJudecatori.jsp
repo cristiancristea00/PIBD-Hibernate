@@ -74,7 +74,7 @@
         </div>
 
         <div class="col-sm text-center menu">
-            <button class="btn btn-primary btn-lg m-2 fix-button" onclick="location.href='index.jsp';" value="Home">
+            <button class="btn btn-primary btn-lg m-2 fix-button" onclick="location.href='/';" value="Home">
                 Home
             </button>
         </div>
@@ -115,15 +115,15 @@
                         <div class="col-md-6">
                             <div class="form-floating">
                                 <input type="text" class="form-control" name="Prenume_update" placeholder="Prenume" aria-label="Prenume"
-                                       id="Prenume_update"
-                                       maxlength="50" autocomplete="given-name">
+                                       id="Prenume_update" maxlength="50" pattern="[A-Za-zăâîțșĂÂÎȚȘ]+(-[A-Za-zăâîțșĂÂÎȚȘ]+)*"
+                                       autocomplete="given-name">
                                 <label for="Prenume_update">Prenume</label>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-floating">
                                 <input type="text" class="form-control" name="Nume_update" placeholder="Nume" aria-label="Nume" id="Nume_update"
-                                       maxlength="50" autocomplete="family-name">
+                                       maxlength="50" pattern="[A-Za-zăâîțșĂÂÎȚȘ]+(-[A-Za-zăâîțșĂÂÎȚȘ]+)*" autocomplete="family-name">
                                 <label for="Nume_update">Nume</label>
                             </div>
                         </div>
@@ -131,7 +131,7 @@
                         <div class="col-12">
                             <div class="form-floating">
                                 <input type="text" class="form-control" name="CNP_update" placeholder="Cod Numeric Personal (CNP)" aria-label="CNP"
-                                       id="CNP_update" maxlength="13">
+                                       id="CNP_update" maxlength="13" pattern="\d{13}">
                                 <label for="CNP_update">Cod Numeric Personal (CNP)</label>
                             </div>
                         </div>
@@ -139,7 +139,7 @@
                         <div class="col-12">
                             <div class="form-floating">
                                 <input type="tel" class="form-control" name="Telefon_update" placeholder="Telefon" aria-label="Telefon"
-                                       id="Telefon_update" autocomplete="tel" maxlength="13">
+                                       id="Telefon_update" autocomplete="tel" maxlength="13" pattern="\+\d{11,12}">
                                 <label for="Telefon_update">Telefon</label>
                             </div>
                         </div>
@@ -147,7 +147,8 @@
                         <div class="col-12">
                             <div class="form-floating">
                                 <input type="email" class="form-control" name="Email_update" placeholder="Email" aria-label="Email" id="Email_update"
-                                       autocomplete="email" maxlength="50">
+                                       autocomplete="email" maxlength="50"
+                                       pattern="([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)">
                                 <label for="Email_update">Email</label>
                             </div>
                         </div>

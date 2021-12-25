@@ -25,7 +25,7 @@ public class JudecatorController extends HttpServlet
         if (request.getParameter("addJudecator") != null)
         {
             judecator.setCNP(request.getParameter("CNP_add"));
-            judecator.setNUME(request.getParameter("Nume_add"));
+            judecator.setNUME(request.getParameter("Nume_add").toUpperCase());
             judecator.setPRENUME(request.getParameter("Prenume_add"));
             judecator.setTELEFON(request.getParameter("Telefon_add"));
             judecator.setEMAIL(request.getParameter("Email_add"));

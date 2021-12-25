@@ -75,7 +75,7 @@
         </div>
 
         <div class="col-sm text-center menu">
-            <button class="btn btn-primary btn-lg m-2 fix-button" onclick="location.href='index.jsp';" value="Home">
+            <button class="btn btn-primary btn-lg m-2 fix-button" onclick="location.href='/';" value="Home">
                 Home
             </button>
         </div>
@@ -119,7 +119,7 @@
                         <div class="col-12">
                             <div class="form-floating">
                                 <input type="text" class="form-control" name="Oras_update" placeholder="Oraș" aria-label="Oraș" id="Oras_update"
-                                       maxlength="20">
+                                       maxlength="20" pattern="[A-Z]{1}.*">
                                 <label for="Oras_update">Oraș</label>
                             </div>
                         </div>
@@ -127,7 +127,7 @@
                         <div class="col-12">
                             <div class="form-floating">
                                 <input type="text" class="form-control" name="Locatie_update" placeholder="Locație" aria-label="Locație"
-                                       id="Locatie_update" maxlength="50">
+                                       id="Locatie_update" maxlength="50" pattern="[A-Z]{1}.*">
                                 <label for="Locatie_update">Locație</label>
                             </div>
                         </div>
@@ -135,7 +135,7 @@
                         <div class="col-12">
                             <div class="form-floating">
                                 <input type="text" class="form-control" name="Sala_update" placeholder="Sala" aria-label="Sala" id="Sala_update"
-                                       maxlength="10">
+                                       maxlength="10" pattern="[A-Z]{1}.*">
                                 <label for="Sala_update">Sala</label>
                             </div>
                         </div>

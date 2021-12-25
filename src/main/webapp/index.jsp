@@ -107,15 +107,14 @@
                         <div class="col-md-6">
                             <div class="form-floating">
                                 <input type="text" class="form-control" name="Prenume_add" placeholder="Prenume" aria-label="Prenume" id="Prenume_add"
-                                       maxlength="50" autocomplete="given-name" required>
+                                       maxlength="50" autocomplete="given-name" pattern="[A-Za-zăâîțșĂÂÎȚȘ]+(-[A-Za-zăâîțșĂÂÎȚȘ]+)*" required>
                                 <label for="Prenume_add">Prenume</label>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-floating">
                                 <input type="text" class="form-control" name="Nume_add" placeholder="Nume" aria-label="Nume" id="Nume_add"
-                                       maxlength="50"
-                                       autocomplete="family-name" required>
+                                       maxlength="50" autocomplete="family-name" pattern="[A-Za-zăâîțșĂÂÎȚȘ]+(-[A-Za-zăâîțșĂÂÎȚȘ]+)*" required>
                                 <label for="Nume_add">Nume</label>
                             </div>
                         </div>
@@ -123,7 +122,7 @@
                         <div class="col-12">
                             <div class="form-floating">
                                 <input type="text" class="form-control" name="CNP_add" placeholder="Cod Numeric Personal (CNP)" aria-label="CNP"
-                                       id="CNP_add" maxlength="13" required>
+                                       id="CNP_add" maxlength="13" pattern="\d{13}" required>
                                 <label for="CNP_add">Cod Numeric Personal (CNP)</label>
                             </div>
                         </div>
@@ -131,7 +130,7 @@
                         <div class="col-12">
                             <div class="form-floating">
                                 <input type="tel" class="form-control" name="Telefon_add" placeholder="Telefon" aria-label="Telefon" id="Telefon_add"
-                                       autocomplete="tel" maxlength="13" required>
+                                       autocomplete="tel" maxlength="13" pattern="\+\d{11,12}" required>
                                 <label for="Telefon_add">Telefon</label>
                             </div>
                         </div>
@@ -139,7 +138,8 @@
                         <div class="col-12">
                             <div class="form-floating">
                                 <input type="email" class="form-control" name="Email_add" placeholder="Email" aria-label="Email" id="Email_add"
-                                       autocomplete="email" maxlength="50" required>
+                                       autocomplete="email" maxlength="50"
+                                       pattern="([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)" required>
                                 <label for="Email_add">Email</label>
                             </div>
                         </div>
@@ -212,7 +212,7 @@
                         <div class="col-12">
                             <div class="form-floating">
                                 <input type="text" class="form-control" name="Numar_add" placeholder="Număr" aria-label="Număr" id="Numar_add"
-                                       maxlength="50" required>
+                                       maxlength="50" pattern="\d{1,5}\/\d{1,2}\/\d{4}" required>
                                 <label for="Numar_add">Număr</label>
                             </div>
                         </div>
@@ -228,7 +228,7 @@
                         <div class="col-12">
                             <div class="form-floating">
                                 <input type="text" class="form-control" name="Materie_juridica_add" placeholder="Materie juridică"
-                                       aria-label="Materie juridică" id="Materie_juridica_add" maxlength="50" required>
+                                       aria-label="Materie juridică" id="Materie_juridica_add" maxlength="50" pattern="[A-Z]{1}.*" required>
                                 <label for="Materie_juridica_add">Materie juridică</label>
                             </div>
                         </div>
@@ -314,7 +314,7 @@
                         <div class="col-12">
                             <div class="form-floating">
                                 <input type="text" class="form-control" name="Oras_add" placeholder="Oraș" aria-label="Oraș" id="Oras_add"
-                                       maxlength="20" required>
+                                       maxlength="20" pattern="[A-Z]{1}.*" required>
                                 <label for="Oras_add">Oraș</label>
                             </div>
                         </div>
@@ -322,7 +322,7 @@
                         <div class="col-12">
                             <div class="form-floating">
                                 <input type="text" class="form-control" name="Locatie_add" placeholder="Locație" aria-label="Locație" id="Locatie_add"
-                                       maxlength="50" required>
+                                       maxlength="50" pattern="[A-Z]{1}.*" required>
                                 <label for="Locatie_add">Locație</label>
                             </div>
                         </div>
@@ -330,7 +330,7 @@
                         <div class="col-12">
                             <div class="form-floating">
                                 <input type="text" class="form-control" name="Sala_add" placeholder="Sala" aria-label="Sala" id="Sala_add"
-                                       maxlength="10" required>
+                                       maxlength="10" pattern="\d+[A-Z]*" required>
                                 <label for="Sala_add">Sala</label>
                             </div>
                         </div>

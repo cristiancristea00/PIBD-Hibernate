@@ -73,7 +73,7 @@
         </div>
 
         <div class="col-sm text-center menu">
-            <button class="btn btn-primary btn-lg m-2 fix-button" onclick="location.href='index.jsp';" value="Home">
+            <button class="btn btn-primary btn-lg m-2 fix-button" onclick="location.href='/';" value="Home">
                 Home
             </button>
         </div>
@@ -104,7 +104,7 @@
                                 <select type="text" class="form-control" name="Select_proces_Update" aria-label="Select proces"
                                         id="Select_proces_Update">
                                     <c:forEach items="${procesList}" var="proces">
-                                        <option value="${proces.ID_PROCES}">${proces.NUMAR}</option>
+                                        <option value="${proces.ID_PROCES}">${proces.NUMAR} (${proces.OBIECT})</option>
                                     </c:forEach>
                                 </select>
                                 <label for="Select_proces_Update">Proces</label>
@@ -114,7 +114,7 @@
                         <div class="col-12">
                             <div class="form-floating">
                                 <input type="text" class="form-control" name="Numar_update" placeholder="Număr" aria-label="Număr" id="Numar_update"
-                                       maxlength="50">
+                                       maxlength="50" pattern="\d{1,5}\/\d{1,2}\/\d{4}">
                                 <label for="Numar_update">Număr</label>
                             </div>
                         </div>
@@ -130,7 +130,7 @@
                         <div class="col-12">
                             <div class="form-floating">
                                 <input type="text" class="form-control" name="Materie_juridica_update" placeholder="Materie juridică"
-                                       aria-label="Materie juridică" id="Materie_juridica_update" maxlength="50">
+                                       aria-label="Materie juridică" id="Materie_juridica_update" maxlength="50" pattern="[A-Z]{1}.*">
                                 <label for="Materie_juridica_update">Materie juridică</label>
                             </div>
                         </div>
@@ -196,7 +196,7 @@
                                         id="Select_proces_Delete">
                                     <%--@elvariable id="procesList" type="java.util.List"--%>
                                     <c:forEach items="${procesList}" var="proces">
-                                        <option value="${proces.ID_PROCES}">${proces.NUMAR}</option>
+                                        <option value="${proces.ID_PROCES}">${proces.NUMAR} (${proces.OBIECT})</option>
                                     </c:forEach>
                                 </select>
                                 <label for="Select_proces_Delete">Judecător</label>
