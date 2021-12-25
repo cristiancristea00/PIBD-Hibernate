@@ -50,17 +50,13 @@ public class ProgramareController extends HttpServlet
             RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
             dispatcher.forward(request, response);
         }
-        if (request.getParameter("updateProgramare") != null)
+        else if (request.getParameter("updateProgramare") != null)
         {
             Long ID_PROGRAMARE = Long.parseLong(request.getParameter("Select_programare_Update"));
-            Programare programare = programareDAO.getProgramare(ID_PROGRAMARE);
+            programare = programareDAO.getProgramare(ID_PROGRAMARE);
 
-            Session session = HibernateUtil.getSessionFactory().openSession();
-            Long ID_JUDECATOR = Long.parseLong(request.getParameter("ID_Judecator_update"));
-            Long ID_PROCES = Long.parseLong(request.getParameter("ID_Proces_update"));
-            Judecator JUDECATOR = session.get(Judecator.class, ID_JUDECATOR);
-            Proces PROCES = session.get(Proces.class, ID_PROCES);
-            session.close();
+            Judecator JUDECATOR = programare.getJUDECATOR();
+            Proces PROCES = programare.getPROCES();
 
             String ORAS = request.getParameter("Oras_update");
             ORAS = ORAS.length() == 0 ? programare.getORAS() : ORAS;
@@ -80,14 +76,14 @@ public class ProgramareController extends HttpServlet
             programareDAO.updateProgramare(ID_PROGRAMARE, JUDECATOR, PROCES, ORAS, LOCATIE, SALA, DATA, ORA);
             response.sendRedirect("Programari?displayProgramari=Tabelul+cu+programări");
         }
-        if (request.getParameter("deleteProgramare") != null)
+        else if (request.getParameter("deleteProgramare") != null)
         {
-            Long ID_PROGRAMARE = Long.parseLong(request.getParameter("ID_PROGRAMARE"));
-            programare.setID_PROGRAMARE(ID_PROGRAMARE);
+            Long ID_PROGRAMARE = Long.parseLong(request.getParameter("Select_programare_Delete"));
+            programare = programareDAO.getProgramare(ID_PROGRAMARE);
             programareDAO.deleteProgramare(programare);
             response.sendRedirect("Programari?displayProgramari=Tabelul+cu+programări");
         }
-        if (request.getParameter("displayProgramari") != null)
+        else if (request.getParameter("displayProgramari") != null)
         {
             List<Programare> programareList = programareDAO.displayProgramari();
             request.setAttribute("programareList", programareList);

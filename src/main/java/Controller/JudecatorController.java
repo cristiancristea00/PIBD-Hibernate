@@ -39,7 +39,7 @@ public class JudecatorController extends HttpServlet
             RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
             dispatcher.forward(request, response);
         }
-        if (request.getParameter("updateJudecator") != null)
+        else if (request.getParameter("updateJudecator") != null)
         {
             Long ID_JUDECATOR = Long.parseLong(request.getParameter("Select_judecator_Update"));
             Judecator old_judecator = judecatorDAO.getJudecator(ID_JUDECATOR);
@@ -69,14 +69,14 @@ public class JudecatorController extends HttpServlet
             judecatorDAO.updateJudecator(ID_JUDECATOR, CNP, NUME, PRENUME, SPECIALIZARE, TELEFON, EMAIL, PRELUARE_MANDAT, EXPIRARE_MANDAT);
             response.sendRedirect("Judecatori?displayJudecatori=Tabelul+cu+judecători");
         }
-        if (request.getParameter("deleteJudecator") != null)
+        else if (request.getParameter("deleteJudecator") != null)
         {
             Long ID_JUDECATOR = Long.parseLong(request.getParameter("Select_judecator_Delete"));
             judecator.setID_JUDECATOR(ID_JUDECATOR);
             judecatorDAO.deleteJudecator(judecator);
             response.sendRedirect("Judecatori?displayJudecatori=Tabelul+cu+judecători");
         }
-        if (request.getParameter("displayJudecatori") != null)
+        else if (request.getParameter("displayJudecatori") != null)
         {
             List<Judecator> judecatorList = judecatorDAO.displayJudecatori();
             request.setAttribute("judecatorList", judecatorList);

@@ -221,7 +221,7 @@
                             <div class="form-floating">
                                 <textarea type="text" class="form-control" name="Obiect_add" placeholder="Obiect" aria-label="Obiect" id="Obiect_add"
                                           maxlength="100" required></textarea>
-                                <label for="CNP_add">Obiect</label>
+                                <label for="Obiect_add">Obiect</label>
                             </div>
                         </div>
 

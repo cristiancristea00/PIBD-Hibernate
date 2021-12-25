@@ -38,7 +38,7 @@
                         "infoFiltered": "(selectate dintr-un total de _MAX_)",
                         "infoPostFix": "",
                         "thousands": ".",
-                        "lengthMenu": "Afișează _MENU_ de procese/pagină",
+                        "lengthMenu": "Afișează _MENU_ procese/pagină",
                         "loadingRecords": "Se încarcă...",
                         "processing": "Se procesează...",
                         "search": "Căutare:",
@@ -82,6 +82,134 @@
             <button type="submit" class="btn btn-primary btn-lg m-2 fix-button" data-bs-toggle="modal" data-bs-target="#procese_delete_modal">
                 Șterge un proces
             </button>
+        </div>
+    </div>
+</div>
+
+<!-- Proces Update Modal -->
+<div class="modal fade" id="procese_update_modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+     aria-labelledby="procese_update_modal_label" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="procese_update_modal_label">Modifică un proces</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form autocomplete="on" action="Procese" method="GET">
+                <div class="modal-body">
+
+                    <div class="row g-3">
+                        <div class="col-12">
+                            <div class="form-floating">
+                                <select type="text" class="form-control" name="Select_proces_Update" aria-label="Select proces"
+                                        id="Select_proces_Update">
+                                    <c:forEach items="${procesList}" var="proces">
+                                        <option value="${proces.ID_PROCES}">${proces.NUMAR}</option>
+                                    </c:forEach>
+                                </select>
+                                <label for="Select_proces_Update">Proces</label>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" name="Numar_update" placeholder="Număr" aria-label="Număr" id="Numar_update"
+                                       maxlength="50">
+                                <label for="Numar_update">Număr</label>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <div class="form-floating">
+                                <textarea type="text" class="form-control" name="Obiect_update" placeholder="Obiect" aria-label="Obiect"
+                                          id="Obiect_update" maxlength="100"></textarea>
+                                <label for="Obiect_update">Obiect</label>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" name="Materie_juridica_update" placeholder="Materie juridică"
+                                       aria-label="Materie juridică" id="Materie_juridica_update" maxlength="50">
+                                <label for="Materie_juridica_update">Materie juridică</label>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <div class="form-floating">
+                                <select type="text" class="form-control" name="Stadiu_procesual_update" aria-label="Stadiu procesual"
+                                        id="Stadiu_procesual_update">
+                                    <option value="" selected></option>
+                                    <option value="Apel">Apel</option>
+                                    <option value="Fond">Fond</option>
+                                    <option value="Recurs">Recurs</option>
+                                    <option value="Revizuire">Revizuire</option>
+                                    <option value="Contestație">Contestație</option>
+                                </select>
+                                <label for="Stadiu_procesual_update">Stadiu procesual</label>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <div class="form-floating">
+                                <textarea type="text" class="form-control" name="Reclamant_update" placeholder="Reclamant" aria-label="Reclamant"
+                                          id="Reclamant_update" maxlength="100"></textarea>
+                                <label for="Reclamant_update">Reclamant</label>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-floating">
+                                <textarea type="text" class="form-control" name="Parat_update" placeholder="Pârât" aria-label="Pârât"
+                                          id="Parat_update" maxlength="100"></textarea>
+                                <label for="Parat_update">Pârât</label>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Închide</button>
+                    <button type="submit" class="btn btn-primary" name="updateProces">Modifică</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Procese Delete Modal -->
+<div class="modal fade" id="procese_delete_modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+     aria-labelledby="procese_delete_modal_label" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="procese_delete_modal_label">Șterge un proces</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form autocomplete="on" action="Procese" method="GET">
+                <div class="modal-body">
+
+                    <div class="row g-3">
+                        <div class="col-12">
+                            <div class="form-floating">
+                                <select type="text" class="form-control" name="Select_proces_Delete" aria-label="Select proces"
+                                        id="Select_proces_Delete">
+                                    <%--@elvariable id="procesList" type="java.util.List"--%>
+                                    <c:forEach items="${procesList}" var="proces">
+                                        <option value="${proces.ID_PROCES}">${proces.NUMAR}</option>
+                                    </c:forEach>
+                                </select>
+                                <label for="Select_proces_Delete">Judecător</label>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Închide</button>
+                    <button type="submit" class="btn btn-primary" name="deleteProces">Șterge</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

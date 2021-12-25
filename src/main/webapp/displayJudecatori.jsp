@@ -39,7 +39,7 @@
                         "infoFiltered": "(selectați dintr-un total de _MAX_)",
                         "infoPostFix": "",
                         "thousands": ".",
-                        "lengthMenu": "Afișează _MENU_ de judecători/pagină",
+                        "lengthMenu": "Afișează _MENU_ judecători/pagină",
                         "loadingRecords": "Se încarcă...",
                         "processing": "Se procesează...",
                         "search": "Căutare:",
@@ -54,17 +54,6 @@
                 }
             );
         });
-    </script>
-
-    <script>
-        if (session.getAttribute("REFRESH") != null)
-        {
-            response.sendRedirect("Judecator");
-        }
-        else
-        {
-            session.setAttribute("REFRESH", "TRUE");
-        }
     </script>
 
 </head>
@@ -115,12 +104,11 @@
                             <div class="form-floating">
                                 <select type="text" class="form-control" name="Select_judecator_Update" aria-label="Select judecator"
                                         id="Select_judecator_Update">
-                                    <%--@elvariable id="judecatorList" type="java.util.List"--%>
                                     <c:forEach items="${judecatorList}" var="judecator">
                                         <option value="${judecator.ID_JUDECATOR}">${judecator.PRENUME} ${judecator.NUME} (${judecator.CNP})</option>
                                     </c:forEach>
                                 </select>
-                                <label for="Specializare_update">Judecător</label>
+                                <label for="Select_judecator_Update">Judecător</label>
                             </div>
                         </div>
 
@@ -238,7 +226,7 @@
                                         <option value="${judecator.ID_JUDECATOR}">${judecator.PRENUME} ${judecator.NUME} (${judecator.CNP})</option>
                                     </c:forEach>
                                 </select>
-                                <label for="Specializare_update">Judecător</label>
+                                <label for="Select_judecator_Delete">Judecător</label>
                             </div>
                         </div>
                     </div>

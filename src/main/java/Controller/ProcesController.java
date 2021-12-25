@@ -34,7 +34,7 @@ public class ProcesController extends HttpServlet
             RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
             dispatcher.forward(request, response);
         }
-        if (request.getParameter("updateProces") != null)
+        else if (request.getParameter("updateProces") != null)
         {
             Long ID_PROCES = Long.parseLong(request.getParameter("Select_proces_Update"));
             Proces old_proces = procesDAO.getProces(ID_PROCES);
@@ -55,14 +55,14 @@ public class ProcesController extends HttpServlet
             procesDAO.updateProces(ID_PROCES, NUMAR, OBIECT, MATERIE_JURIDICA, STADIU_PROCESUAL, RECLAMANT, PARAT);
             response.sendRedirect("Procese?displayProcese=Tabelul+cu+procese");
         }
-        if (request.getParameter("deleteProces") != null)
+        else if (request.getParameter("deleteProces") != null)
         {
             Long ID_PROCES = Long.parseLong(request.getParameter("Select_proces_Delete"));
             proces.setID_PROCES(ID_PROCES);
             procesDAO.deleteProces(proces);
             response.sendRedirect("Procese?displayProcese=Tabelul+cu+procese");
         }
-        if (request.getParameter("displayProcese") != null)
+        else if (request.getParameter("displayProcese") != null)
         {
             List<Proces> procese = procesDAO.displayProcese();
             request.setAttribute("procesList", procese);

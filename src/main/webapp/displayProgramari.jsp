@@ -40,7 +40,7 @@
                         "infoFiltered": "(selectate dintr-un total de _MAX_)",
                         "infoPostFix": "",
                         "thousands": ".",
-                        "lengthMenu": "Afișează _MENU_ de programări/pagină",
+                        "lengthMenu": "Afișează _MENU_ programări/pagină",
                         "loadingRecords": "Se încarcă...",
                         "processing": "Se procesează...",
                         "search": "Căutare:",
@@ -88,18 +88,134 @@
     </div>
 </div>
 
+<!-- Programări Update Modal -->
+<div class="modal fade" id="programari_update_modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+     aria-labelledby="programari_update_modal_label" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="programari_update_modal_label">Modifică o programare</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form autocomplete="on" action="Programari" method="GET">
+                <div class="modal-body">
+
+                    <div class="row g-3">
+                        <div class="col-12">
+                            <div class="form-floating">
+                                <select type="text" class="form-control" name="Select_programare_Update" aria-label="Programare"
+                                        id="Select_programare_Update">
+                                    <%--@elvariable id="programareList" type="java.util.List"--%>
+                                    <c:forEach var="programare" items="${programareList}">
+                                        <option value="${programare.ID_PROGRAMARE}">${programare.PROCES.NUMAR}
+                                            - ${programare.JUDECATOR.PRENUME} ${programare.JUDECATOR.NUME} (${programare.JUDECATOR.CNP})
+                                        </option>
+                                    </c:forEach>
+                                </select>
+                                <label for="Select_programare_Update">Programare</label>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" name="Oras_update" placeholder="Oraș" aria-label="Oraș" id="Oras_update"
+                                       maxlength="20">
+                                <label for="Oras_update">Oraș</label>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" name="Locatie_update" placeholder="Locație" aria-label="Locație"
+                                       id="Locatie_update" maxlength="50">
+                                <label for="Locatie_update">Locație</label>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" name="Sala_update" placeholder="Sala" aria-label="Sala" id="Sala_update"
+                                       maxlength="10">
+                                <label for="Sala_update">Sala</label>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input type="date" class="form-control" name="Data_update" placeholder="Data" aria-label="Data" id="Data_update">
+                                <label for="Data_update">Data</label>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input type="time" class="form-control" name="Ora_update" placeholder="Ora" aria-label="Ora" id="Ora_update">
+                                <label for="Ora_update">Ora</label>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Închide</button>
+                    <button type="submit" class="btn btn-primary" name="updateProgramare">Modifică</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Programări Delete Modal -->
+<div class="modal fade" id="programari_delete_modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+     aria-labelledby="programari_delete_modal_label" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="programari_delete_modal_label">Șterge o programare</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form autocomplete="on" action="Programari" method="GET">
+                <div class="modal-body">
+
+                    <div class="row g-3">
+                        <div class="col-12">
+                            <div class="form-floating">
+                                <select type="text" class="form-control" name="Select_programare_Delete" aria-label="Select programare"
+                                        id="Select_programare_Delete">
+                                    <%--@elvariable id="programareList" type="java.util.List"--%>
+                                    <c:forEach var="programare" items="${programareList}">
+                                        <option value="${programare.ID_PROGRAMARE}">${programare.PROCES.NUMAR}
+                                            - ${programare.JUDECATOR.PRENUME} ${programare.JUDECATOR.NUME} (${programare.JUDECATOR.CNP})
+                                        </option>
+                                    </c:forEach>
+                                </select>
+                                <label for="Select_programare_Delete">Programare</label>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Închide</button>
+                    <button type="submit" class="btn btn-primary" name="deleteProgramare">Șterge</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 <div class="m-5">
     <table id="programari_table" class="table table-striped cell-border">
         <thead>
         <tr class="table-dark text-center align-middle">
             <th scope="col">Număr</th>
-            <th scope="col">Nume</th>
-            <th scope="col">Telefon</th>
-            <th scope="col">Obiect</th>
             <th scope="col">Materie juridică</th>
             <th scope="col">Stadiu procesual</th>
-            <th scope="col">Reclamant</th>
-            <th scope="col">Pârât</th>
+            <th scope="col">Obiect</th>
+            <th scope="col">Nume</th>
+            <th scope="col">Email</th>
+            <th scope="col">Telefon</th>
             <th scope="col">Oraș</th>
             <th scope="col">Locație</th>
             <th scope="col">Sala</th>
@@ -113,13 +229,12 @@
         <c:forEach var="PROGRAMARE" items="${programareList}">
             <tr class="align-middle">
                 <td class="text-center">${PROGRAMARE.PROCES.NUMAR}</td>
-                <td class="text-center">${PROGRAMARE.JUDECATOR.PRENUME} ${PROGRAMARE.JUDECATOR.NUME}</td>
-                <td class="text-center">${PROGRAMARE.JUDECATOR.TELEFON}</td>
-                <td>${PROGRAMARE.PROCES.OBIECT}</td>
                 <td class="text-center">${PROGRAMARE.PROCES.MATERIE_JURIDICA}</td>
                 <td class="text-center">${PROGRAMARE.PROCES.STADIU_PROCESUAL}</td>
-                <td>${PROGRAMARE.PROCES.RECLAMANT}</td>
-                <td>${PROGRAMARE.PROCES.PARAT}</td>
+                <td>${PROGRAMARE.PROCES.OBIECT}</td>
+                <td class="text-center">${PROGRAMARE.JUDECATOR.PRENUME} ${PROGRAMARE.JUDECATOR.NUME}</td>
+                <td class="text-center">${PROGRAMARE.JUDECATOR.EMAIL}</td>
+                <td class="text-center">${PROGRAMARE.JUDECATOR.TELEFON}</td>
                 <td>${PROGRAMARE.ORAS}</td>
                 <td>${PROGRAMARE.LOCATIE}</td>
                 <td class="text-center">${PROGRAMARE.SALA}</td>
