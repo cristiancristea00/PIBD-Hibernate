@@ -40,7 +40,7 @@ public class JudecatorController extends HttpServlet
             judecator.setNUME(request.getParameter("Nume_add").toUpperCase());
             judecator.setPRENUME(request.getParameter("Prenume_add"));
             judecator.setTELEFON(request.getParameter("Telefon_add"));
-            judecator.setEMAIL(request.getParameter("Email_add"));
+            judecator.setEMAIL(request.getParameter("Email_add").toLowerCase());
             judecator.setSPECIALIZARE(request.getParameter("Specializare_add"));
 
             DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -64,7 +64,7 @@ public class JudecatorController extends HttpServlet
             String TELEFON = request.getParameter("Telefon_update");
             TELEFON = TELEFON.length() == 0 ? judecator.getTELEFON() : TELEFON;
             String EMAIL = request.getParameter("Email_update");
-            EMAIL = EMAIL.length() == 0 ? judecator.getEMAIL() : EMAIL;
+            EMAIL = EMAIL.length() == 0 ? judecator.getEMAIL() : EMAIL.toLowerCase();
             String SPECIALIZARE = request.getParameter("Specializare_update");
             SPECIALIZARE = SPECIALIZARE.length() == 0 ? judecator.getSPECIALIZARE() : SPECIALIZARE;
 
