@@ -94,7 +94,7 @@
                 <h5 class="modal-title" id="judecatori_update_modal_label">Modifică un judecător</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form autocomplete="on" action="Judecatori" method="GET">
+            <form autocomplete="on" action="Judecatori" method="POST">
                 <div class="modal-body">
 
                     <div class="row g-3">
@@ -212,7 +212,7 @@
                 <h5 class="modal-title" id="judecatori_delete_modal_label">Șterge un judecător</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form autocomplete="on" action="Judecatori" method="GET">
+            <form autocomplete="on" action="Judecatori" method="POST">
                 <div class="modal-body">
 
                     <div class="row g-3">

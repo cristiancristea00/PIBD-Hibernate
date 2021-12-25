@@ -100,7 +100,7 @@
                 <h5 class="modal-title" id="judecatori_add_modal_label">Adaugă un judecător nou</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form autocomplete="on" action="Judecatori" method="GET">
+            <form autocomplete="on" action="Judecatori" method="POST">
                 <div class="modal-body">
 
                     <div class="row g-3">
@@ -205,7 +205,7 @@
                 <h5 class="modal-title" id="procese_add_modal_label">Adaugă un proces nou</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form autocomplete="on" action="Procese" method="GET">
+            <form autocomplete="on" action="Procese" method="POST">
                 <div class="modal-body">
 
                     <div class="row g-3">
@@ -283,7 +283,7 @@
                 <h5 class="modal-title" id="programari_add_modal_label">Adaugă o programare nouă</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form autocomplete="on" action="Programari" method="GET">
+            <form autocomplete="on" action="Programari" method="POST">
                 <div class="modal-body">
 
                     <div class="row g-3">

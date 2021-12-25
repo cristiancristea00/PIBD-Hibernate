@@ -21,6 +21,18 @@ public class ProcesController extends HttpServlet
     @Override
     protected void doGet(@NotNull HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
+        if (request.getParameter("displayProcese") != null)
+        {
+            List<Proces> procese = procesDAO.displayProcese();
+            request.setAttribute("procesList", procese);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("displayProcese.jsp");
+            dispatcher.forward(request, response);
+        }
+    }
+
+    @Override
+    protected void doPost(@NotNull HttpServletRequest request, HttpServletResponse response) throws IOException
+    {
         if (request.getParameter("addProces") != null)
         {
             proces.setNUMAR(request.getParameter("Numar_add"));
@@ -31,8 +43,7 @@ public class ProcesController extends HttpServlet
             proces.setPARAT(request.getParameter("Parat_add"));
 
             procesDAO.addProces(proces);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
-            dispatcher.forward(request, response);
+            response.sendRedirect("/");
         }
         else if (request.getParameter("updateProces") != null)
         {
@@ -62,12 +73,11 @@ public class ProcesController extends HttpServlet
             procesDAO.deleteProces(proces);
             response.sendRedirect("Procese?displayProcese=Tabelul+cu+procese");
         }
-        else if (request.getParameter("displayProcese") != null)
-        {
-            List<Proces> procese = procesDAO.displayProcese();
-            request.setAttribute("procesList", procese);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("displayProcese.jsp");
-            dispatcher.forward(request, response);
-        }
+    }
+
+    @Override
+    public String getServletInfo()
+    {
+        return "Controller for Procese Servlet";
     }
 }

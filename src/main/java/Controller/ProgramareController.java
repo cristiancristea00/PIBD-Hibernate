@@ -27,6 +27,19 @@ public class ProgramareController extends HttpServlet
     @Override
     protected void doGet(@NotNull HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
+
+        if (request.getParameter("displayProgramari") != null)
+        {
+            List<Programare> programareList = programareDAO.displayProgramari();
+            request.setAttribute("programareList", programareList);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("displayProgramari.jsp");
+            dispatcher.forward(request, response);
+        }
+    }
+
+    @Override
+    protected void doPost(@NotNull HttpServletRequest request, HttpServletResponse response) throws IOException
+    {
         if (request.getParameter("addProgramare") != null)
         {
             Long ID_JUDECATOR = Long.parseLong(request.getParameter("ID_Judecator_add"));
@@ -47,8 +60,7 @@ public class ProgramareController extends HttpServlet
             programare.setORA(LocalTime.parse(request.getParameter("Ora_add"), timeFormat));
 
             programareDAO.addProgramare(programare);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
-            dispatcher.forward(request, response);
+            response.sendRedirect("/");
         }
         else if (request.getParameter("updateProgramare") != null)
         {
@@ -83,12 +95,11 @@ public class ProgramareController extends HttpServlet
             programareDAO.deleteProgramare(programare);
             response.sendRedirect("Programari?displayProgramari=Tabelul+cu+programări");
         }
-        else if (request.getParameter("displayProgramari") != null)
-        {
-            List<Programare> programareList = programareDAO.displayProgramari();
-            request.setAttribute("programareList", programareList);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("displayProgramari.jsp");
-            dispatcher.forward(request, response);
-        }
+    }
+
+    @Override
+    public String getServletInfo()
+    {
+        return "Controller for Programări Servlet";
     }
 }

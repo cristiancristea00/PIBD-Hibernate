@@ -22,6 +22,18 @@ public class JudecatorController extends HttpServlet
     @Override
     protected void doGet(@NotNull HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
+        if (request.getParameter("displayJudecatori") != null)
+        {
+            List<Judecator> judecatorList = judecatorDAO.displayJudecatori();
+            request.setAttribute("judecatorList", judecatorList);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("displayJudecatori.jsp");
+            dispatcher.forward(request, response);
+        }
+    }
+
+    @Override
+    protected void doPost(@NotNull HttpServletRequest request, HttpServletResponse response) throws IOException
+    {
         if (request.getParameter("addJudecator") != null)
         {
             judecator.setCNP(request.getParameter("CNP_add"));
@@ -36,8 +48,7 @@ public class JudecatorController extends HttpServlet
             judecator.setEXPIRARE_MANDAT(LocalDate.parse(request.getParameter("Expirare_mandat_add"), dateFormat));
 
             judecatorDAO.addJudecator(judecator);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
-            dispatcher.forward(request, response);
+            response.sendRedirect("/");
         }
         else if (request.getParameter("updateJudecator") != null)
         {
@@ -47,7 +58,7 @@ public class JudecatorController extends HttpServlet
             String CNP = request.getParameter("CNP_update");
             CNP = CNP.length() == 0 ? judecator.getCNP() : CNP;
             String NUME = request.getParameter("Nume_update");
-            NUME = NUME.length() == 0 ? judecator.getNUME() : NUME;
+            NUME = NUME.length() == 0 ? judecator.getNUME() : NUME.toUpperCase();
             String PRENUME = request.getParameter("Prenume_update");
             PRENUME = PRENUME.length() == 0 ? judecator.getPRENUME() : PRENUME;
             String TELEFON = request.getParameter("Telefon_update");
@@ -76,12 +87,11 @@ public class JudecatorController extends HttpServlet
             judecatorDAO.deleteJudecator(judecator);
             response.sendRedirect("Judecatori?displayJudecatori=Tabelul+cu+judecători");
         }
-        else if (request.getParameter("displayJudecatori") != null)
-        {
-            List<Judecator> judecatorList = judecatorDAO.displayJudecatori();
-            request.setAttribute("judecatorList", judecatorList);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("displayJudecatori.jsp");
-            dispatcher.forward(request, response);
-        }
+    }
+
+    @Override
+    public String getServletInfo()
+    {
+        return "Controller for Judecatori Servlet";
     }
 }

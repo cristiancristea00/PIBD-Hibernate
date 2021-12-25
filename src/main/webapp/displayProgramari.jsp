@@ -95,7 +95,7 @@
                 <h5 class="modal-title" id="programari_update_modal_label">Modifică o programare</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form autocomplete="on" action="Programari" method="GET">
+            <form autocomplete="on" action="Programari" method="POST">
                 <div class="modal-body">
 
                     <div class="row g-3">
@@ -173,7 +173,7 @@
                 <h5 class="modal-title" id="programari_delete_modal_label">Șterge o programare</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form autocomplete="on" action="Programari" method="GET">
+            <form autocomplete="on" action="Programari" method="POST">
                 <div class="modal-body">
 
                     <div class="row g-3">

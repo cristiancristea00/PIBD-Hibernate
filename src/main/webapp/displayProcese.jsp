@@ -93,7 +93,7 @@
                 <h5 class="modal-title" id="procese_update_modal_label">Modifică un proces</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form autocomplete="on" action="Procese" method="GET">
+            <form autocomplete="on" action="Procese" method="POST">
                 <div class="modal-body">
 
                     <div class="row g-3">
@@ -184,7 +184,7 @@
                 <h5 class="modal-title" id="procese_delete_modal_label">Șterge un proces</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form autocomplete="on" action="Procese" method="GET">
+            <form autocomplete="on" action="Procese" method="POST">
                 <div class="modal-body">
 
                     <div class="row g-3">
