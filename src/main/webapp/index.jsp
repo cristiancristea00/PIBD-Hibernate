@@ -107,7 +107,7 @@
                         <div class="col-md-6">
                             <div class="form-floating">
                                 <input type="text" class="form-control" name="Prenume_add" placeholder="Prenume" aria-label="Prenume" id="Prenume_add"
-                                       maxlength="50" autocomplete="given-name" pattern="[A-Za-zăâîțșĂÂÎȚȘ]+(-[A-Za-zăâîțșĂÂÎȚȘ]+)*" required>
+                                       maxlength="50" autocomplete="given-name" pattern="[A-ZĂÂÎȚȘ]{1}[a-zăâîțș]+(-[A-ZĂÂÎȚȘ]{1}[a-zăâîțș]+)*" required>
                                 <label for="Prenume_add">Prenume</label>
                             </div>
                         </div>
