@@ -1,8 +1,9 @@
 package DAOImplement;
 
-import JavaBean.*;
-import org.hibernate.*;
 import DAO.ProcesDAO;
+import JavaBean.Proces;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import java.util.List;
 

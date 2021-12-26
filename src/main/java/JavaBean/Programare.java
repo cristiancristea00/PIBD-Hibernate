@@ -1,11 +1,8 @@
 package JavaBean;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.io.Serializable;
-import java.sql.Date;
-import java.sql.Time;
-import java.time.*;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 public class Programare implements Serializable
 {

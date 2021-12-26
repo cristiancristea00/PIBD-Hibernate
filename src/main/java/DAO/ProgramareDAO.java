@@ -1,9 +1,12 @@
 package DAO;
 
-import JavaBean.*;
+import JavaBean.Judecator;
+import JavaBean.Proces;
+import JavaBean.Programare;
 import org.jetbrains.annotations.NotNull;
 
-import java.time.*;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 public interface ProgramareDAO
