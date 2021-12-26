@@ -292,7 +292,7 @@
                                 <select type="text" class="form-control" name="ID_Proces_add" aria-label="Proces" id="ID_Proces_add"
                                         required>
                                     <c:forEach var="proces" items="${procesList}">
-                                        <option value="${proces.ID_PROCES}">${proces.NUMAR}</option>
+                                        <option value="${proces.ID_PROCES}">${proces.NUMAR} (${proces.OBIECT})</option>
                                     </c:forEach>
                                 </select>
                                 <label for="ID_Proces_add">Proces</label>
