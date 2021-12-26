@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="java.time.format.DateTimeFormatter" %>
 <!doctype html>
 <html lang="ro">
 
@@ -260,8 +261,8 @@
                 <td class="text-center">${JUDECATOR.TELEFON}</td>
                 <td>${JUDECATOR.EMAIL}</td>
                 <td>${JUDECATOR.SPECIALIZARE}</td>
-                <td class="text-center">${JUDECATOR.PRELUARE_MANDAT}</td>
-                <td class="text-center">${JUDECATOR.EXPIRARE_MANDAT}</td>
+                <td class="text-center">${JUDECATOR.PRELUARE_MANDAT.format(DateTimeFormatter.ofPattern("dd.MM.yyyy"))}</td>
+                <td class="text-center">${JUDECATOR.EXPIRARE_MANDAT.format(DateTimeFormatter.ofPattern("dd.MM.yyyy"))}</td>
             </tr>
         </c:forEach>
         </tbody>

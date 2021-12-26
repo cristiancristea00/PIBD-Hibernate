@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="java.time.format.DateTimeFormatter" %>
 <!doctype html>
 <html lang="ro">
 
@@ -233,8 +234,8 @@
                 <td>${PROGRAMARE.ORAS}</td>
                 <td>${PROGRAMARE.LOCATIE}</td>
                 <td class="text-center">${PROGRAMARE.SALA}</td>
-                <td class="text-center">${PROGRAMARE.DATA}</td>
-                <td class="text-center">${PROGRAMARE.ORA}</td>
+                <td class="text-center">${PROGRAMARE.DATA.format(DateTimeFormatter.ofPattern("dd.MM.yyyy"))}</td>
+                <td class="text-center">${PROGRAMARE.ORA.format(DateTimeFormatter.ofPattern("HH:mm"))}</td>
             </tr>
         </c:forEach>
         </tbody>
