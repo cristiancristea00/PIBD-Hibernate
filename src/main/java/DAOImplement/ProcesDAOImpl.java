@@ -30,7 +30,7 @@ public class ProcesDAOImpl implements ProcesDAO
     }
 
     @Override
-    public void updateProces(Long ID_PROCES, String NUMAR, String OBIECT, String MATERIE_JURIDICA, String STADIU_PROCESUAL, String RECLAMANT,
+    public void updateProces(long ID_PROCES, String NUMAR, String OBIECT, String MATERIE_JURIDICA, String STADIU_PROCESUAL, String RECLAMANT,
                              String PARAT)
     {
         Session session = HibernateUtil.getSessionFactory().openSession();
@@ -48,7 +48,7 @@ public class ProcesDAOImpl implements ProcesDAO
     }
 
     @Override
-    public Proces getProces(Long ID_PROCES)
+    public Proces getProces(long ID_PROCES)
     {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Proces proces = session.load(Proces.class, ID_PROCES);

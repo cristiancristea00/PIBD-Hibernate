@@ -42,8 +42,8 @@ public class ProgramareController extends HttpServlet
     {
         if (request.getParameter("addProgramare") != null)
         {
-            Long ID_JUDECATOR = Long.parseLong(request.getParameter("ID_Judecator_add"));
-            Long ID_PROCES = Long.parseLong(request.getParameter("ID_Proces_add"));
+            long ID_JUDECATOR = Long.parseLong(request.getParameter("ID_Judecator_add"));
+            long ID_PROCES = Long.parseLong(request.getParameter("ID_Proces_add"));
             Session session = HibernateUtil.getSessionFactory().openSession();
             programare.setJUDECATOR(session.get(Judecator.class, ID_JUDECATOR));
             programare.setPROCES(session.get(Proces.class, ID_PROCES));
@@ -64,7 +64,7 @@ public class ProgramareController extends HttpServlet
         }
         else if (request.getParameter("updateProgramare") != null)
         {
-            Long ID_PROGRAMARE = Long.parseLong(request.getParameter("Select_programare_Update"));
+            long ID_PROGRAMARE = Long.parseLong(request.getParameter("Select_programare_Update"));
             programare = programareDAO.getProgramare(ID_PROGRAMARE);
 
             Judecator JUDECATOR = programare.getJUDECATOR();
@@ -90,7 +90,7 @@ public class ProgramareController extends HttpServlet
         }
         else if (request.getParameter("deleteProgramare") != null)
         {
-            Long ID_PROGRAMARE = Long.parseLong(request.getParameter("Select_programare_Delete"));
+            long ID_PROGRAMARE = Long.parseLong(request.getParameter("Select_programare_Delete"));
             programare = programareDAO.getProgramare(ID_PROGRAMARE);
             programareDAO.deleteProgramare(programare);
             response.sendRedirect("Programari?displayProgramari=Tabelul+cu+programări");

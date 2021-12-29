@@ -8,7 +8,7 @@ import java.util.Set;
 
 public class Proces implements Serializable
 {
-    private Long ID_PROCES;
+    private long ID_PROCES;
     private String NUMAR;
     private String OBIECT;
     private String MATERIE_JURIDICA;
@@ -29,7 +29,7 @@ public class Proces implements Serializable
         PROGRAMARI = new HashSet<>();
     }
 
-    public Proces(Long ID_PROCES, String NUMAR, String OBIECT, String MATERIE_JURIDICA, String STADIU_PROCESUAL, String RECLAMANT, String PARAT,
+    public Proces(long ID_PROCES, String NUMAR, String OBIECT, String MATERIE_JURIDICA, String STADIU_PROCESUAL, String RECLAMANT, String PARAT,
                   Set<Programare> PROGRAMARI)
     {
         this.ID_PROCES = ID_PROCES;
@@ -54,12 +54,12 @@ public class Proces implements Serializable
         this.PROGRAMARI = new HashSet<>(proces.getPROGRAMARI());
     }
 
-    public Long getID_PROCES()
+    public long getID_PROCES()
     {
         return ID_PROCES;
     }
 
-    public void setID_PROCES(Long ID_PROCES)
+    public void setID_PROCES(long ID_PROCES)
     {
         this.ID_PROCES = ID_PROCES;
     }

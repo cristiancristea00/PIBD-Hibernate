@@ -46,7 +46,7 @@ public class ProcesController extends HttpServlet
         }
         else if (request.getParameter("updateProces") != null)
         {
-            Long ID_PROCES = Long.parseLong(request.getParameter("Select_proces_Update"));
+            long ID_PROCES = Long.parseLong(request.getParameter("Select_proces_Update"));
             proces = procesDAO.getProces(ID_PROCES);
 
             String NUMAR = request.getParameter("Numar_update");
@@ -67,7 +67,7 @@ public class ProcesController extends HttpServlet
         }
         else if (request.getParameter("deleteProces") != null)
         {
-            Long ID_PROCES = Long.parseLong(request.getParameter("Select_proces_Delete"));
+            long ID_PROCES = Long.parseLong(request.getParameter("Select_proces_Delete"));
             proces.setID_PROCES(ID_PROCES);
             procesDAO.deleteProces(proces);
             response.sendRedirect("Procese?displayProcese=Tabelul+cu+procese");

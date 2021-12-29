@@ -52,7 +52,7 @@ public class JudecatorController extends HttpServlet
         }
         else if (request.getParameter("updateJudecator") != null)
         {
-            Long ID_JUDECATOR = Long.parseLong(request.getParameter("Select_judecator_Update"));
+            long ID_JUDECATOR = Long.parseLong(request.getParameter("Select_judecator_Update"));
             judecator = judecatorDAO.getJudecator(ID_JUDECATOR);
 
             String CNP = request.getParameter("CNP_update");
@@ -82,7 +82,7 @@ public class JudecatorController extends HttpServlet
         }
         else if (request.getParameter("deleteJudecator") != null)
         {
-            Long ID_JUDECATOR = Long.parseLong(request.getParameter("Select_judecator_Delete"));
+            long ID_JUDECATOR = Long.parseLong(request.getParameter("Select_judecator_Delete"));
             judecator.setID_JUDECATOR(ID_JUDECATOR);
             judecatorDAO.deleteJudecator(judecator);
             response.sendRedirect("Judecatori?displayJudecatori=Tabelul+cu+judecători");

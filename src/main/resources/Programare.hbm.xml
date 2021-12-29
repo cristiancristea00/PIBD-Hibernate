@@ -3,7 +3,7 @@
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
     <class name="JavaBean.Programare" table="PROGRAMARI" optimistic-lock="version">
-        <id name="ID_PROGRAMARE" type="java.lang.Long">
+        <id name="ID_PROGRAMARE" type="long">
             <column name="ID_PROGRAMARE" sql-type="BIGINT" not-null="true"/>
             <generator class="identity"/>
         </id>

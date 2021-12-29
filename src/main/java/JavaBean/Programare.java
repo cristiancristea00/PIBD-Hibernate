@@ -6,7 +6,7 @@ import java.time.LocalTime;
 
 public class Programare implements Serializable
 {
-    private Long ID_PROGRAMARE;
+    private long ID_PROGRAMARE;
     private Judecator JUDECATOR;
     private Proces PROCES;
     private String ORAS;
@@ -27,12 +27,12 @@ public class Programare implements Serializable
         ORA = LocalTime.now();
     }
 
-    public Long getID_PROGRAMARE()
+    public long getID_PROGRAMARE()
     {
         return ID_PROGRAMARE;
     }
 
-    public void setID_PROGRAMARE(Long ID_PROGRAMARE)
+    public void setID_PROGRAMARE(long ID_PROGRAMARE)
     {
         this.ID_PROGRAMARE = ID_PROGRAMARE;
     }

@@ -35,7 +35,7 @@ public class ProgramareDAOImpl implements ProgramareDAO
     }
 
     @Override
-    public void updateProgramare(Long ID_PROGRAMARE, Judecator JUDECATOR, Proces PROCES, String ORAS, String LOCATIE, String SALA,
+    public void updateProgramare(long ID_PROGRAMARE, Judecator JUDECATOR, Proces PROCES, String ORAS, String LOCATIE, String SALA,
                                  @NotNull LocalDate DATA, @NotNull LocalTime ORA)
     {
         Session session = HibernateUtil.getSessionFactory().openSession();
@@ -54,7 +54,7 @@ public class ProgramareDAOImpl implements ProgramareDAO
     }
 
     @Override
-    public Programare getProgramare(Long ID_PROGRAMARE)
+    public Programare getProgramare(long ID_PROGRAMARE)
     {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Programare programare = session.load(Programare.class, ID_PROGRAMARE);

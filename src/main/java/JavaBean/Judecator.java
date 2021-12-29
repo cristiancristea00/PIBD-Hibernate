@@ -9,7 +9,7 @@ import java.util.Set;
 
 public class Judecator implements Serializable
 {
-    private Long ID_JUDECATOR;
+    private long ID_JUDECATOR;
     private String CNP;
     private String NUME;
     private String PRENUME;
@@ -34,7 +34,7 @@ public class Judecator implements Serializable
         PROGRAMARI = new HashSet<>();
     }
 
-    public Judecator(Long ID_JUDECATOR, String CNP, String NUME, String PRENUME, String TELEFON, String EMAIL, String SPECIALIZARE,
+    public Judecator(long ID_JUDECATOR, String CNP, String NUME, String PRENUME, String TELEFON, String EMAIL, String SPECIALIZARE,
                      LocalDate PRELUARE_MANDAT, LocalDate EXPIRARE_MANDAT, Set<Programare> PROGRAMARI)
     {
         this.ID_JUDECATOR = ID_JUDECATOR;
@@ -63,12 +63,12 @@ public class Judecator implements Serializable
         this.PROGRAMARI = new HashSet<>(judecator.getPROGRAMARI());
     }
 
-    public Long getID_JUDECATOR()
+    public long getID_JUDECATOR()
     {
         return ID_JUDECATOR;
     }
 
-    public void setID_JUDECATOR(Long ID_JUDECATOR)
+    public void setID_JUDECATOR(long ID_JUDECATOR)
     {
         this.ID_JUDECATOR = ID_JUDECATOR;
     }

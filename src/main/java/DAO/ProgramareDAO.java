@@ -15,10 +15,10 @@ public interface ProgramareDAO
 
     void deleteProgramare(Programare programare);
 
-    void updateProgramare(Long ID_PROGRAMARE, Judecator JUDECATOR, Proces PROCES, String ORAS, String LOCATIE, String SALA, @NotNull LocalDate DATA,
+    void updateProgramare(long ID_PROGRAMARE, Judecator JUDECATOR, Proces PROCES, String ORAS, String LOCATIE, String SALA, @NotNull LocalDate DATA,
                           @NotNull LocalTime ORA);
 
-    Programare getProgramare(Long ID_PROGRAMARE);
+    Programare getProgramare(long ID_PROGRAMARE);
 
     List<Programare> displayProgramari();
 }

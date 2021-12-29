@@ -3,7 +3,7 @@
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
     <class name="JavaBean.Proces" table="PROCESE" optimistic-lock="version">
-        <id name="ID_PROCES" type="java.lang.Long">
+        <id name="ID_PROCES" type="long">
             <column name="ID_PROCES" sql-type="BIGINT" not-null="true"/>
             <generator class="identity"/>
         </id>

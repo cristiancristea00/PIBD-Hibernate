@@ -3,7 +3,7 @@
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
     <class name="JavaBean.Judecator" table="JUDECATORI" optimistic-lock="version">
-        <id name="ID_JUDECATOR" type="java.lang.Long">
+        <id name="ID_JUDECATOR" type="long">
             <column name="ID_JUDECATOR" sql-type="BIGINT" not-null="true"/>
             <generator class="identity"/>
         </id>
