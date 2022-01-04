@@ -1,6 +1,7 @@
 package Controller;
 
-import DAOImplement.HibernateUtil;
+import DAOImplement.JudecatorDAOImpl;
+import DAOImplement.ProcesDAOImpl;
 import DAOImplement.ProgramareDAOImpl;
 import JavaBean.Judecator;
 import JavaBean.Proces;
@@ -10,7 +11,6 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.hibernate.Session;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
@@ -23,6 +23,8 @@ public class ProgramareController extends HttpServlet
 {
     Programare programare = new Programare();
     ProgramareDAOImpl programareDAO = new ProgramareDAOImpl();
+    JudecatorDAOImpl judecatorDAO = new JudecatorDAOImpl();
+    ProcesDAOImpl procesDAO = new ProcesDAOImpl();
 
     @Override
     protected void doGet(@NotNull HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
@@ -44,10 +46,8 @@ public class ProgramareController extends HttpServlet
         {
             long ID_JUDECATOR = Long.parseLong(request.getParameter("ID_Judecator_add"));
             long ID_PROCES = Long.parseLong(request.getParameter("ID_Proces_add"));
-            Session session = HibernateUtil.getSessionFactory().openSession();
-            programare.setJUDECATOR(session.get(Judecator.class, ID_JUDECATOR));
-            programare.setPROCES(session.get(Proces.class, ID_PROCES));
-            session.close();
+            programare.setJUDECATOR(judecatorDAO.getJudecator(ID_JUDECATOR));
+            programare.setPROCES(procesDAO.getProces(ID_PROCES));
 
             programare.setORAS(request.getParameter("Oras_add"));
             programare.setLOCATIE(request.getParameter("Locatie_add"));
