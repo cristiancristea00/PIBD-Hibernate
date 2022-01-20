@@ -2,7 +2,6 @@ package DAO;
 
 import JavaBean.Judecator;
 
-import java.time.LocalDate;
 import java.util.List;
 
 public interface JudecatorDAO
@@ -11,10 +10,9 @@ public interface JudecatorDAO
 
     void deleteJudecator(Judecator judecator);
 
-    void updateJudecator(long ID_JUDECATOR, String CNP, String NUME, String PRENUME, String TELEFON, String EMAIL, String SPECIALIZARE,
-                         LocalDate PRELUARE_MANDAT, LocalDate EXPIRARE_MANDAT);
+    void updateJudecator(Judecator judecator);
 
     Judecator getJudecator(long ID_JUDECATOR);
 
-    List<Judecator> displayJudecatori();
+    List<Judecator> getJudecatori();
 }

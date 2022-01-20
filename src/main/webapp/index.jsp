@@ -32,8 +32,8 @@
 <%
     JudecatorDAOImpl judecatorDAO = new JudecatorDAOImpl();
     ProcesDAOImpl procesDAO = new ProcesDAOImpl();
-    List<Judecator> judecatorList = judecatorDAO.displayJudecatori();
-    List<Proces> procesList = procesDAO.displayProcese();
+    List<Judecator> judecatorList = judecatorDAO.getJudecatori();
+    List<Proces> procesList = procesDAO.getProcese();
     request.setAttribute("judecatorList", judecatorList);
     request.setAttribute("procesList", procesList);
 %>

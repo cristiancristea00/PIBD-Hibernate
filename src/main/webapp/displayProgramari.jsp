@@ -131,7 +131,7 @@
                         <div class="col-12">
                             <div class="form-floating">
                                 <input type="text" class="form-control" name="Sala_update" placeholder="Sala" aria-label="Sala" id="Sala_update"
-                                       maxlength="10" pattern="[A-Z]{1}.*">
+                                       maxlength="10" pattern="\d+[A-Z]*">
                                 <label for="Sala_update">Sala</label>
                             </div>
                         </div>

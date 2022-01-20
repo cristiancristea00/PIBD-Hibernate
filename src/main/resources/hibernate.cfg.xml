@@ -6,7 +6,9 @@
         <property name="hibernate.hbm2ddl.auto">update</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="hibernate.show_sql">true</property>
-        <property name="hibernate.query.factory_class">org.hibernate.hql.internal.classic.ClassicQueryTranslatorFactory</property>
+        <property name="hibernate.query.factory_class">
+            org.hibernate.hql.internal.classic.ClassicQueryTranslatorFactory
+        </property>
         <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/PIBD_PROJECT</property>
         <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
         <property name="hibernate.connection.username">pibd</property>

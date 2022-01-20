@@ -27,12 +27,13 @@ public class ProgramareController extends HttpServlet
     ProcesDAOImpl procesDAO = new ProcesDAOImpl();
 
     @Override
-    protected void doGet(@NotNull HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    protected void doGet(@NotNull HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException
     {
 
         if (request.getParameter("displayProgramari") != null)
         {
-            List<Programare> programareList = programareDAO.displayProgramari();
+            List<Programare> programareList = programareDAO.getProgramari();
             request.setAttribute("programareList", programareList);
             RequestDispatcher dispatcher = request.getRequestDispatcher("displayProgramari.jsp");
             dispatcher.forward(request, response);
@@ -85,7 +86,15 @@ public class ProgramareController extends HttpServlet
             String ORA_STR = request.getParameter("Ora_update");
             LocalTime ORA = ORA_STR.length() == 0 ? programare.getORA() : LocalTime.parse(ORA_STR, timeFormat);
 
-            programareDAO.updateProgramare(ID_PROGRAMARE, JUDECATOR, PROCES, ORAS, LOCATIE, SALA, DATA, ORA);
+            programare.setJUDECATOR(JUDECATOR);
+            programare.setPROCES(PROCES);
+            programare.setORAS(ORAS);
+            programare.setLOCATIE(LOCATIE);
+            programare.setSALA(SALA);
+            programare.setDATA(DATA);
+            programare.setORA(ORA);
+
+            programareDAO.updateProgramare(programare);
             response.sendRedirect("Programari?displayProgramari=Tabelul+cu+programări");
         }
         else if (request.getParameter("deleteProgramare") != null)

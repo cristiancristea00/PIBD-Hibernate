@@ -20,11 +20,12 @@ public class JudecatorController extends HttpServlet
     JudecatorDAOImpl judecatorDAO = new JudecatorDAOImpl();
 
     @Override
-    protected void doGet(@NotNull HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    protected void doGet(@NotNull HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException
     {
         if (request.getParameter("displayJudecatori") != null)
         {
-            List<Judecator> judecatorList = judecatorDAO.displayJudecatori();
+            List<Judecator> judecatorList = judecatorDAO.getJudecatori();
             request.setAttribute("judecatorList", judecatorList);
             RequestDispatcher dispatcher = request.getRequestDispatcher("displayJudecatori.jsp");
             dispatcher.forward(request, response);
@@ -72,12 +73,21 @@ public class JudecatorController extends HttpServlet
             String PRELUARE_MANDAT_STR = request.getParameter("Preluare_mandat_update");
             String EXPIRARE_MANDAT_STR = request.getParameter("Expirare_mandat_update");
 
-            LocalDate PRELUARE_MANDAT = PRELUARE_MANDAT_STR.length() == 0 ? judecator.getPRELUARE_MANDAT() :
-                    LocalDate.parse(PRELUARE_MANDAT_STR, dateFormat);
-            LocalDate EXPIRARE_MANDAT = EXPIRARE_MANDAT_STR.length() == 0 ? judecator.getEXPIRARE_MANDAT() :
-                    LocalDate.parse(EXPIRARE_MANDAT_STR, dateFormat);
+            LocalDate PRELUARE_MANDAT = PRELUARE_MANDAT_STR.length() == 0 ? judecator.getPRELUARE_MANDAT()
+                    : LocalDate.parse(PRELUARE_MANDAT_STR, dateFormat);
+            LocalDate EXPIRARE_MANDAT = EXPIRARE_MANDAT_STR.length() == 0 ? judecator.getEXPIRARE_MANDAT()
+                    : LocalDate.parse(EXPIRARE_MANDAT_STR, dateFormat);
 
-            judecatorDAO.updateJudecator(ID_JUDECATOR, CNP, NUME, PRENUME, SPECIALIZARE, TELEFON, EMAIL, PRELUARE_MANDAT, EXPIRARE_MANDAT);
+            judecator.setCNP(CNP);
+            judecator.setNUME(NUME);
+            judecator.setPRENUME(PRENUME);
+            judecator.setSPECIALIZARE(SPECIALIZARE);
+            judecator.setTELEFON(TELEFON);
+            judecator.setEMAIL(EMAIL);
+            judecator.setPRELUARE_MANDAT(PRELUARE_MANDAT);
+            judecator.setEXPIRARE_MANDAT(EXPIRARE_MANDAT);
+
+            judecatorDAO.updateJudecator(judecator);
             response.sendRedirect("Judecatori?displayJudecatori=Tabelul+cu+judecători");
         }
         else if (request.getParameter("deleteJudecator") != null)
