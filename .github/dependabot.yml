@@ -1,0 +1,16 @@
+version: 2
+
+updates:
+  - package-ecosystem: "maven"
+    directory: "/"
+    schedule:
+      interval: "daily"
+      time: "06:00"
+    assignees:
+      - "cristiancristea00"
+    commit-message:
+      prefix: "[maven]"
+    labels:
+      - "maven"
+      - "dependencies"
+      - "dependabot"
