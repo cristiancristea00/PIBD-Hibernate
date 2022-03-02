@@ -10,3 +10,6 @@ updates:
       - "cristiancristea00"
     commit-message:
       prefix: "[maven]"
+    labels:
+      - "maven"
+      - "dependencies"
